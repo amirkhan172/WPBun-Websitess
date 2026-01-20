@@ -7,7 +7,9 @@
       "Bash(ls:*)",
       "Bash(find:*)",
       "WebFetch(domain:www.wpxpo.com)",
-      "Bash(dir /s /b \"C:\\\\Users\\\\Hp450\\\\Desktop\\\\MY ALL PROJECTS \\(IMPORTANT\\)\\\\WPBun Website\")"
+      "Bash(dir /s /b \"C:\\\\Users\\\\Hp450\\\\Desktop\\\\MY ALL PROJECTS \\(IMPORTANT\\)\\\\WPBun Website\")",
+      "WebSearch",
+      "WebFetch(domain:ps.w.org)"
     ]
   }
 }

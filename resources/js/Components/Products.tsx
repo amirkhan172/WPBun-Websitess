@@ -25,7 +25,7 @@ const products: Product[] = [
         description: 'The best product bundles plugin with enhanced discount strategies, helping you boost sales and average order value.',
         badge: 'hot',
         image: 'https://www.wowrevenue.com/wp-content/uploads/2025/10/WowRevenue-Product-Bundles-for-WooCommerce.webp',
-        logo: 'https://ps.w.org/revenue/assets/icon-256x256.gif?rev=3229322',
+        logo: '/build/assets/wowRevenue-icon.svg',
     },
     {
         name: 'WowAddons',
@@ -33,14 +33,14 @@ const products: Product[] = [
         description: 'The best product addons plugin for WooCommerce that lets users add extra fields to personalize product pages.',
         badge: 'hot',
         image: 'https://www.wpxpo.com/wp-content/uploads/2025/11/WowAddons-1.5-Blog-banner-1.webp',
-        logo: 'https://ps.w.org/product-addons/assets/icon-256x256.gif?rev=3283352',
+        logo: 'https://ps.w.org/product-addons/assets/icon-256X256.gif?rev=3283352',
     },
     {
         name: 'WholesaleX',
         slug: 'wholesalex',
         description: 'All-in-one B2B & B2B+B2C Wholesale plugin with dynamic rules, user roles, registration form and other cool features.',
         image: 'https://ps.w.org/wholesalex/assets/banner-1544x500.jpg?rev=3342237',
-        logo: 'https://ps.w.org/wholesalex/assets/icon-256x256.gif?rev=2894829',
+        logo: '/build/assets/wholesalex-icon.svg',
     },
     {
         name: 'PostX',
@@ -62,14 +62,15 @@ const products: Product[] = [
         description: 'The advanced table rate shipping plugin for WooCommerce that comes with 30+ conditions.',
         badge: 'new',
         image: 'https://www.wpxpo.com/wp-content/uploads/2025/12/Wowshipping-Pin-point.jpg',
-        logo: 'https://ps.w.org/wow-table-rate-shipping/assets/icon-256x256.gif?rev=3421638',
+        logo: '/build/assets/wowShipping-icon.svg',
     },
 ];
 
 export default function Products() {
     return (
-        <section id="products" className="py-20 bg-[#f5faff]">
-            <div className="max-w-[1200px] mx-auto px-4">
+        <section id="products" className="py-20 bg-gradient-to-b from-[#f8fafc] to-[#aec2d4]
+">
+            <div className="w-full px-[20px]">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -86,8 +87,8 @@ export default function Products() {
                 </motion.div>
 
                 {/* Products Grid */}
-                <div className="bg-[#f5faff] rounded-lg p-6 md:p-10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className=" rounded-lg">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
                         {products.map((product, index) => (
                             <motion.div
                                 key={product.slug}
@@ -98,7 +99,7 @@ export default function Products() {
                             >
                                 <Link
                                     href={`/products/${product.slug}`}
-                                    className="block bg-white rounded-lg hover:shadow-md transition-all duration-300 overflow-hidden"
+                                    className="block bg-white rounded-2xl overflow-hidden"
                                 >
                                     {/* Content Section - Logo, Name, Description, Link */}
                                     <div className="p-5">
@@ -107,9 +108,9 @@ export default function Products() {
                                             <img
                                                 src={product.logo}
                                                 alt={`${product.name} logo`}
-                                                className="w-10 h-10 object-contain"
+                                                className="w-10 h-10 object-contain bg-white rounded-lg"
                                             />
-                                            <h3 className="text-xl font-bold text-[#070707]">
+                                            <h3 className="text-3xl font-bold text-[#070707]">
                                                 {product.name}
                                             </h3>
                                             {product.badge === 'new' && (
@@ -137,12 +138,14 @@ export default function Products() {
                                     </div>
 
                                     {/* Image Section - Now at Bottom */}
-                                    <div className="w-full h-[200px] overflow-hidden">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="w-full h-full object-cover object-top"
-                                        />
+                                    <div className="px-5 pb-5">
+                                        <div className="w-full h-[300px] overflow-hidden rounded-xl">
+                                            <img
+                                                src={product.image}
+                                                alt={product.name}
+                                                className="w-full h-full object-cover object-top"
+                                            />
+                                        </div>
                                     </div>
                                 </Link>
                             </motion.div>
