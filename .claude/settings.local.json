@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:wpxpo.com)",
+      "WebFetch(domain:www.wowrevenue.com)",
+      "WebFetch(domain:getwholesalex.com)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "WebFetch(domain:www.wpxpo.com)",
+      "Bash(dir /s /b \"C:\\\\Users\\\\Hp450\\\\Desktop\\\\MY ALL PROJECTS \\(IMPORTANT\\)\\\\WPBun Website\")"
+    ]
+  }
+}

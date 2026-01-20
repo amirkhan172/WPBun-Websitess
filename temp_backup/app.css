@@ -1,0 +1,73 @@
+@import 'tailwindcss';
+
+@source '../js/**/*.tsx';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-inter: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-chakra: 'Chakra Petch', ui-sans-serif, system-ui, sans-serif;
+
+    --color-primary: #1f66ff;
+    --color-primary-dark: #1a56d6;
+    --color-secondary: #070707;
+    --color-accent: #cdf33b;
+    --color-accent-dark: #b8de30;
+    --color-bg-light: #f5f7f9;
+    --color-bg-gradient-start: #ffffff;
+    --color-bg-gradient-end: #d4eaff;
+    --color-text-dark: #070707;
+    --color-text-gray: #6b7280;
+    --color-text-light: #9ca3af;
+    --color-border: #e5e7eb;
+}
+
+@layer base {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-inter);
+        color: var(--color-text-dark);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+@layer utilities {
+    .container-custom {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    .gradient-hero {
+        background: linear-gradient(180deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+    }
+
+    .gradient-text {
+        background: linear-gradient(90deg, #1f66ff 0%, #8b5cf6 50%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-primary-dark hover:shadow-lg;
+    }
+
+    .btn-accent {
+        @apply bg-accent text-secondary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-accent-dark hover:shadow-lg;
+    }
+
+    .btn-outline {
+        @apply border-2 border-secondary text-secondary px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:bg-secondary hover:text-white;
+    }
+}
