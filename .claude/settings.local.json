@@ -9,7 +9,10 @@
       "WebFetch(domain:www.wpxpo.com)",
       "Bash(dir /s /b \"C:\\\\Users\\\\Hp450\\\\Desktop\\\\MY ALL PROJECTS \\(IMPORTANT\\)\\\\WPBun Website\")",
       "WebSearch",
-      "WebFetch(domain:ps.w.org)"
+      "WebFetch(domain:ps.w.org)",
+      "Bash(curl:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:wowoptin.com)"
     ]
   }
 }

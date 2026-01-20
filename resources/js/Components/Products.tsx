@@ -25,7 +25,7 @@ const products: Product[] = [
         description: 'The best product bundles plugin with enhanced discount strategies, helping you boost sales and average order value.',
         badge: 'hot',
         image: 'https://www.wowrevenue.com/wp-content/uploads/2025/10/WowRevenue-Product-Bundles-for-WooCommerce.webp',
-        logo: '/build/assets/wowRevenue-icon.svg',
+        logo: '/images/logos/wowrevenue-logo.gif',
     },
     {
         name: 'WowAddons',
@@ -40,7 +40,7 @@ const products: Product[] = [
         slug: 'wholesalex',
         description: 'All-in-one B2B & B2B+B2C Wholesale plugin with dynamic rules, user roles, registration form and other cool features.',
         image: 'https://ps.w.org/wholesalex/assets/banner-1544x500.jpg?rev=3342237',
-        logo: '/build/assets/wholesalex-icon.svg',
+        logo: '/images/logos/wholesalex-logo.gif',
     },
     {
         name: 'PostX',
@@ -53,7 +53,7 @@ const products: Product[] = [
         name: 'WowOptin',
         slug: 'wowoptin',
         description: 'The ultimate popup builder plugin with smart targeting, custom triggers, advanced display rules.',
-        image: 'https://www.wpxpo.com/wp-content/uploads/2024/10/connect-flash.png',
+        image: '/images/wowoptin-hero.jpg',
         logo: 'https://ps.w.org/optin/assets/icon-256x256.gif?rev=3235122',
     },
     {
@@ -62,7 +62,7 @@ const products: Product[] = [
         description: 'The advanced table rate shipping plugin for WooCommerce that comes with 30+ conditions.',
         badge: 'new',
         image: 'https://www.wpxpo.com/wp-content/uploads/2025/12/Wowshipping-Pin-point.jpg',
-        logo: '/build/assets/wowShipping-icon.svg',
+        logo: '/images/logos/wowshipping-logo.gif',
     },
 ];
 
@@ -88,7 +88,7 @@ export default function Products() {
 
                 {/* Products Grid */}
                 <div className=" rounded-lg">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
+                    <div className="flex flex-wrap gap-[12px]">
                         {products.map((product, index) => (
                             <motion.div
                                 key={product.slug}
@@ -96,21 +96,22 @@ export default function Products() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
+                                className={`w-full ${index === 0 ? 'md:w-[calc(55%-6px)]' : index === 1 ? 'md:w-[calc(45%-6px)]' : index === 2 ? 'md:w-[calc(45%-6px)]' : index === 3 ? 'md:w-[calc(55%-6px)]' : index === 4 ? 'md:w-full' : index === 5 ? 'md:w-[calc(55%-6px)]' : index === 6 ? 'md:w-[calc(45%-6px)]' : 'md:w-[calc(50%-6px)]'}`}
                             >
                                 <Link
                                     href={`/products/${product.slug}`}
-                                    className="block bg-white rounded-2xl overflow-hidden"
+                                    className={`block bg-white rounded-2xl overflow-hidden ${index === 4 ? 'md:flex' : ''}`}
                                 >
                                     {/* Content Section - Logo, Name, Description, Link */}
-                                    <div className="p-5">
+                                    <div className={`pt-[30px] px-9 pb-10 ${index === 4 ? 'md:w-1/2 md:flex md:flex-col md:justify-center' : ''}`}>
                                         {/* Logo and Name */}
-                                        <div className="flex items-center gap-3 mb-3">
+                                        <div className="flex items-center gap-3 mb-7">
                                             <img
                                                 src={product.logo}
                                                 alt={`${product.name} logo`}
-                                                className="w-10 h-10 object-contain bg-white rounded-lg"
+                                                className="w-14 h-14 object-contain bg-white rounded-lg"
                                             />
-                                            <h3 className="text-3xl font-bold text-[#070707]">
+                                            <h3 className="text-4xl font-bold text-[#070707]">
                                                 {product.name}
                                             </h3>
                                             {product.badge === 'new' && (
@@ -126,20 +127,20 @@ export default function Products() {
                                         </div>
 
                                         {/* Description */}
-                                        <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                                        <p className="text-gray-600 text-[20px] leading-relaxed mb-6">
                                             {product.description}
                                         </p>
 
                                         {/* Explore Now Link */}
-                                        <span className="inline-flex items-center gap-1 text-[#1f66ff] font-semibold text-sm hover:gap-2 transition-all">
+                                        <span className="inline-flex items-center gap-1 text-[#1f66ff] font-semibold text-xl hover:gap-2 transition-all">
                                             Explore Now
-                                            <ArrowRight className="w-4 h-4" />
+                                            <ArrowRight className="w-6 h-6" />
                                         </span>
                                     </div>
 
-                                    {/* Image Section - Now at Bottom */}
-                                    <div className="px-5 pb-5">
-                                        <div className="w-full h-[300px] overflow-hidden rounded-xl">
+                                    {/* Image Section */}
+                                    <div className={`px-9 pb-7 ${index === 4 ? 'md:w-1/2 md:py-7' : ''}`}>
+                                        <div className={`w-full h-[350px] overflow-hidden rounded-xl`}>
                                             <img
                                                 src={product.image}
                                                 alt={product.name}
