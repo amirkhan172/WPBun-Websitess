@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, User, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags } from 'lucide-react';
@@ -113,9 +113,36 @@ const navItems: NavItem[] = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < 100) {
+                // Always show navbar at top of page
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY) {
+                // Scrolling down - hide navbar
+                setIsVisible(false);
+            } else {
+                // Scrolling up - show navbar
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollY]);
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-[99999] bg-white shadow-lg">
+        <nav className={`fixed top-0 left-0 right-0 z-[99999] bg-white shadow-lg transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
             <div className="container-custom">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
