@@ -68,7 +68,7 @@ const products: Product[] = [
 
 export default function Products() {
     return (
-        <section id="products" className="py-20 bg-gradient-to-b from-[#f8fafc] to-[#aec2d4]
+        <section id="products" className=" py-20 bg-gradient-to-b from-[#f8fafc] to-[#cbd3db]
 ">
             <div className="w-full px-[20px]">
                 {/* Section Header */}

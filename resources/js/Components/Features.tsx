@@ -11,30 +11,30 @@ interface Feature {
 const features: Feature[] = [
     {
         title: 'Budget-friendly Solutions',
-        description: 'Get premium features at competitive prices. We believe powerful tools should be accessible to businesses of all sizes.',
-        icon: <DollarSign className="w-8 h-8" />,
+        description: 'Premium quality without the premium price tag.',
+        icon: <DollarSign className="w-20 h-20" strokeWidth={1} />,
     },
     {
         title: 'Modern Design Approach',
-        description: 'Contemporary, clean designs that follow the latest trends. Your website will look stunning and professional.',
-        icon: <Palette className="w-8 h-8" />,
+        description: 'Beautiful interfaces that users love to interact with.',
+        icon: <Palette className="w-20 h-20" strokeWidth={1} />,
     },
     {
         title: 'Intuitive and User-friendly',
-        description: 'No coding skills required. Our plugins are designed with simplicity in mind so anyone can use them effectively.',
-        icon: <MousePointer className="w-8 h-8" />,
+        description: 'No technical expertise required to get started.',
+        icon: <MousePointer className="w-20 h-20" strokeWidth={1} />,
     },
     {
         title: 'Top-notch Human Support',
-        description: 'Our dedicated support team responds within 24 hours. Real humans helping you solve real problems.',
-        icon: <Headphones className="w-8 h-8" />,
+        description: 'We\'re here for you, every step of your business journey.',
+        icon: <Headphones className="w-20 h-20" strokeWidth={1} />,
     },
 ];
 
 export default function Features() {
     return (
-        <section className="py-20 bg-white">
-            <div className="container-custom">
+        <section className="py-20 bg-gray-50">
+            <div className="">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -42,19 +42,16 @@ export default function Features() {
                     viewport={{ once: true }}
                     className="text-center max-w-3xl mx-auto mb-16"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#ff176b]/10 text-[#ff176b] rounded-full text-sm font-semibold mb-4">
-                        WHY CHOOSE US
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#070707] mb-4">
+                    <h2 className="text-4xl mt-10 md:text-4xl lg:text-[52px] font-bold text-[#070707] mb-4">
                         What Makes Us Different
                     </h2>
-                    <p className="text-gray-600 text-lg">
-                        We're committed to delivering exceptional value and quality in everything we create.
+                    <p className="text-gray-600 text-xl pt-3">
+                        Not another plugin developer company. Here’s what we do differently.
                     </p>
                 </motion.div>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[25px] w-400 px-[30px]">
                     {features.map((feature, index) => (
                         <motion.div
                             key={feature.title}
@@ -62,13 +59,13 @@ export default function Features() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-[#f5f7f9] rounded-2xl p-8 text-center hover:bg-white hover:shadow-xl transition-all duration-300 group"
+                            className="border border-gray-300 rounded-2xl p-8 bg-white"
                         >
-                            <div className="w-20 h-20 bg-gradient-to-br from-[#1f66ff] to-[#0693e3] text-white rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform shadow-lg">
+                            <div className="w-20 h-20 text-black rounded-2xl flex items-center justify-center mb-6">
                                 {feature.icon}
                             </div>
-                            <h3 className="text-xl font-bold text-[#070707] mb-3">{feature.title}</h3>
-                            <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                            <h3 className="text-[27px] text-[#070707] mb-3">{feature.title}</h3>
+                            <p className="text-lg text-gray-600 leading-relaxed">{feature.description}</p>
                         </motion.div>
                     ))}
                 </div>
