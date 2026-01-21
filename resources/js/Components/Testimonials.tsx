@@ -54,37 +54,66 @@ const testimonials: Testimonial[] = [
     },
 ];
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+            delayChildren: 0.1
+        }
+    }
+};
+
+const cardVariants = {
+    hidden: {
+        opacity: 0,
+        y: 80,
+        scale: 0.95
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            duration: 0.7,
+            ease: "easeOut" as const
+        }
+    }
+};
+
 export default function Testimonials() {
     return (
-        <section className="py-20 bg-[#f5f7f9]">
+        <section className="py-20 bg-[#f1f2f3]">
             <div className="container-custom">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center max-w-3xl mx-auto mb-16"
+                    className="text-center max-w-5xl mx-auto mb-16"
                 >
-                    <span className="inline-block px-4 py-2 bg-[#1f66ff]/10 text-[#1f66ff] rounded-full text-sm font-semibold mb-4">
-                        TESTIMONIALS
-                    </span>
-                    <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#070707] mb-4">
-                        Loved by Thousands of Users
+                    <h2 className="text-3xl md:text-4xl lg:text-[50px] font-bold text-[#070707] mb-4">
+                        <span className="block">Recognized by WordPress Experts</span>
+                        <span className="block mt-3">and Community Leaders</span>
                     </h2>
-                    <p className="text-gray-600 text-lg">
-                        See what our customers have to say about their experience with WPXPO plugins.
+                    <p className="text-gray-600 text-lg mt-6">
+                        It's a matter of pride to see renowned industry experts put their trust in us.
                     </p>
                 </motion.div>
 
                 {/* Testimonials Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {testimonials.map((testimonial, index) => (
+                <motion.div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                >
+                    {testimonials.map((testimonial) => (
                         <motion.div
                             key={testimonial.name}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            variants={cardVariants}
                             className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 relative group"
                         >
                             {/* Quote Icon */}
@@ -118,7 +147,7 @@ export default function Testimonials() {
                             </div>
                         </motion.div>
                     ))}
-                </div>
+                </motion.div>
 
                 {/* Trustpilot Badge */}
                 <motion.div

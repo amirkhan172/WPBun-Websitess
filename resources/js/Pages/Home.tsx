@@ -5,8 +5,6 @@ import Products from '@/Components/Products';
 import Features from '@/Components/Features';
 import Testimonials from '@/Components/Testimonials';
 import Stats from '@/Components/Stats';
-import Pricing from '@/Components/Pricing';
-import CTA from '@/Components/CTA';
 
 export default function Home() {
     return (
@@ -17,8 +15,6 @@ export default function Home() {
             <Features />
             <Testimonials />
             <Stats />
-            <Pricing />
-            <CTA />
         </AppLayout>
     );
 }
