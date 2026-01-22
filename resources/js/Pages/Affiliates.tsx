@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { DollarSign, Percent, Cookie, CreditCard, Users, TrendingUp, BarChart3, CheckCircle, XCircle, ChevronRight, ChevronDown, Star, Zap, Gift, Globe, Mail, ArrowRight, Sparkles } from 'lucide-react';
 
@@ -135,8 +135,7 @@ export default function Affiliates() {
             <Head title="Affiliate Program - Earn 25% Commission | WPBun" />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 bg-gradient-to-b from-[#1f66ff] to-blue-700 overflow-hidden relative">
-                <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-10"></div>
+            <section className="pt-32 pb-20 bg-blue-50 overflow-hidden relative">
                 <div className="container-custom relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -148,7 +147,7 @@ export default function Affiliates() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white rounded-full px-5 py-2 mb-8 border border-white/20"
+                            className="inline-flex items-center gap-2 bg-blue-100 text-[#1f66ff] rounded-full px-5 py-2 mb-8 border border-blue-200"
                         >
                             <Sparkles className="w-4 h-4" />
                             <span className="font-medium">Join 500+ Successful Affiliates</span>
@@ -158,17 +157,17 @@ export default function Affiliates() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#070707] mb-6"
                         >
                             Refer Our Products &
-                            <span className="block text-[#cdf33b]">Get 25% Commissions</span>
+                            <span className="block text-[#1f66ff]">Get 25% Commissions</span>
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="text-lg md:text-xl text-white/80 mb-10"
+                            className="text-lg md:text-xl text-gray-600 mb-10"
                         >
                             Join our affiliate program and earn generous commissions by promoting high-quality WordPress plugins trusted by 65,000+ users worldwide.
                         </motion.p>
@@ -183,10 +182,10 @@ export default function Affiliates() {
                             {stats.map((stat, index) => (
                                 <div
                                     key={stat.label}
-                                    className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10"
+                                    className="bg-white rounded-xl p-4 border border-gray-200"
                                 >
-                                    <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
-                                    <div className="text-white/60 text-sm">{stat.label}</div>
+                                    <div className="text-3xl font-bold text-[#1f66ff] mb-1">{stat.value}</div>
+                                    <div className="text-gray-600 text-sm">{stat.label}</div>
                                 </div>
                             ))}
                         </motion.div>
@@ -197,16 +196,16 @@ export default function Affiliates() {
                             transition={{ duration: 0.5, delay: 0.5 }}
                             className="flex flex-col sm:flex-row gap-4 justify-center"
                         >
-                            <a
-                                href="mailto:affiliates@wpbun.com?subject=Affiliate Program Application"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors"
                             >
                                 Become an Affiliate
                                 <ArrowRight className="w-5 h-5" />
-                            </a>
+                            </Link>
                             <Link
                                 href="/affiliates-policy"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors border border-white/20"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition-colors border border-blue-200"
                             >
                                 View Program Terms
                             </Link>
@@ -284,7 +283,7 @@ export default function Affiliates() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-white text-[#ff176b] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-blue-100 text-[#1f66ff] rounded-full text-sm font-semibold mb-6 border border-blue-200">
                             GET STARTED
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
@@ -309,7 +308,7 @@ export default function Affiliates() {
                                     <div className="w-20 h-20 bg-[#1f66ff] rounded-full flex items-center justify-center mx-auto mb-4 text-white">
                                         {step.icon}
                                     </div>
-                                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#ff176b] rounded-full flex items-center justify-center text-white font-bold text-sm">
+                                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-200 rounded-full flex items-center justify-center text-blue-700 font-bold text-sm">
                                         {step.step}
                                     </div>
                                 </div>
@@ -429,18 +428,23 @@ export default function Affiliates() {
                                     className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
                                 >
                                     <span className="font-semibold text-[#070707]">{faq.question}</span>
-                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
+                                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-300 ${openFaq === index ? 'rotate-180' : ''}`} />
                                 </button>
-                                {openFaq === index && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="px-6 pb-4"
-                                    >
-                                        <p className="text-gray-600">{faq.answer}</p>
-                                    </motion.div>
-                                )}
+                                <AnimatePresence>
+                                    {openFaq === index && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-6 pb-4">
+                                                <p className="text-gray-600">{faq.answer}</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         ))}
                     </div>
@@ -448,7 +452,7 @@ export default function Affiliates() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-blue-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -456,30 +460,30 @@ export default function Affiliates() {
                         viewport={{ once: true }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <div className="w-20 h-20 bg-[#cdf33b] rounded-full flex items-center justify-center mx-auto mb-8">
-                            <DollarSign className="w-10 h-10 text-[#070707]" />
+                        <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-8">
+                            <DollarSign className="w-10 h-10 text-[#1f66ff]" />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Ready to Start Earning?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8">
+                        <p className="text-gray-600 text-lg mb-8">
                             Join hundreds of affiliates already earning passive income by promoting WPBun products. It's free to join and takes only a few minutes to get started.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="mailto:affiliates@wpbun.com?subject=Affiliate Program Application"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors"
                             >
                                 Apply Now
                                 <ArrowRight className="w-5 h-5" />
-                            </a>
-                            <a
-                                href="mailto:affiliates@wpbun.com?subject=Affiliate Program Question"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                            </Link>
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition-colors border border-blue-200"
                             >
                                 <Mail className="w-5 h-5" />
                                 Contact Us
-                            </a>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

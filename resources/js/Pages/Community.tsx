@@ -349,14 +349,14 @@ export default function Community() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/products"
-                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#1a56db] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
                             >
                                 Explore Products
                                 <ChevronRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/agency-bundle"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold border border-gray-200 hover:border-[#1f66ff] hover:text-[#1f66ff] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold border border-[#1f66ff] hover:bg-blue-100 transition-colors"
                             >
                                 View Bundle Deal
                             </Link>

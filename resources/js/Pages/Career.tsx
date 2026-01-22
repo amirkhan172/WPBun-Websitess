@@ -148,8 +148,7 @@ export default function Career() {
             <Head title="Careers - Join Our Team | WPBun" />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 bg-gradient-to-b from-[#070707] to-gray-900 overflow-hidden relative">
-                <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-5"></div>
+            <section className="pt-32 pb-20 bg-lime-50 overflow-hidden relative">
                 <div className="container-custom relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -162,7 +161,7 @@ export default function Career() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="inline-flex items-center gap-2 bg-[#ff176b] text-white rounded-full px-5 py-2 mb-8"
+                            className="inline-flex items-center gap-2 bg-lime-500 text-white rounded-full px-5 py-2 mb-8"
                         >
                             <span className="relative flex h-3 w-3">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -175,17 +174,17 @@ export default function Career() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#070707] mb-6"
                         >
                             Ready to Take a
-                            <span className="block text-[#cdf33b]">Challenge?</span>
+                            <span className="block text-lime-600">Challenge?</span>
                         </motion.h1>
 
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="text-lg md:text-xl text-gray-300 mb-10"
+                            className="text-lg md:text-xl text-gray-600 mb-10"
                         >
                             Join our team of passionate developers, designers, and marketers building the future of WordPress. Work remotely, grow your skills, and make an impact.
                         </motion.p>
@@ -197,21 +196,21 @@ export default function Career() {
                             transition={{ duration: 0.5, delay: 0.4 }}
                             className="grid grid-cols-2 md:grid-cols-4 gap-6"
                         >
-                            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                                <div className="text-3xl font-bold text-[#cdf33b] mb-1">30+</div>
-                                <div className="text-gray-400 text-sm">Team Members</div>
+                            <div className="bg-white rounded-xl p-4 border border-gray-200">
+                                <div className="text-3xl font-bold text-lime-600 mb-1">30+</div>
+                                <div className="text-gray-600 text-sm">Team Members</div>
                             </div>
-                            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                                <div className="text-3xl font-bold text-[#cdf33b] mb-1">100%</div>
-                                <div className="text-gray-400 text-sm">Remote</div>
+                            <div className="bg-white rounded-xl p-4 border border-gray-200">
+                                <div className="text-3xl font-bold text-lime-600 mb-1">100%</div>
+                                <div className="text-gray-600 text-sm">Remote</div>
                             </div>
-                            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                                <div className="text-3xl font-bold text-[#cdf33b] mb-1">10+</div>
-                                <div className="text-gray-400 text-sm">Countries</div>
+                            <div className="bg-white rounded-xl p-4 border border-gray-200">
+                                <div className="text-3xl font-bold text-lime-600 mb-1">10+</div>
+                                <div className="text-gray-600 text-sm">Countries</div>
                             </div>
-                            <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-                                <div className="text-3xl font-bold text-[#cdf33b] mb-1">{jobOpenings.length}</div>
-                                <div className="text-gray-400 text-sm">Open Positions</div>
+                            <div className="bg-white rounded-xl p-4 border border-gray-200">
+                                <div className="text-3xl font-bold text-lime-600 mb-1">{jobOpenings.length}</div>
+                                <div className="text-gray-600 text-sm">Open Positions</div>
                             </div>
                         </motion.div>
 
@@ -223,7 +222,7 @@ export default function Career() {
                         >
                             <a
                                 href="#openings"
-                                className="inline-flex items-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center gap-2 bg-lime-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-lime-600 transition-colors"
                             >
                                 View Open Positions
                                 <ChevronRight className="w-5 h-5" />
@@ -242,7 +241,7 @@ export default function Career() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-[#1f66ff]/10 text-[#1f66ff] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-lime-100 text-lime-600 rounded-full text-sm font-semibold mb-6">
                             OUR VALUES
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
@@ -263,7 +262,7 @@ export default function Career() {
                                 transition={{ delay: index * 0.1 }}
                                 className="text-center"
                             >
-                                <div className="w-20 h-20 bg-gradient-to-br from-[#1f66ff] to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
+                                <div className="w-20 h-20 bg-lime-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-lime-600">
                                     {value.icon}
                                 </div>
                                 <h3 className="text-xl font-bold text-[#070707] mb-2">{value.title}</h3>
@@ -283,7 +282,7 @@ export default function Career() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-white text-[#ff176b] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-lime-200 text-lime-700 rounded-full text-sm font-semibold mb-6">
                             BENEFITS
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
@@ -304,7 +303,7 @@ export default function Career() {
                                 transition={{ delay: index * 0.05 }}
                                 className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow"
                             >
-                                <div className="w-14 h-14 bg-[#1f66ff]/10 rounded-xl flex items-center justify-center mb-4 text-[#1f66ff]">
+                                <div className="w-14 h-14 bg-lime-100 rounded-xl flex items-center justify-center mb-4 text-lime-600">
                                     {benefit.icon}
                                 </div>
                                 <h3 className="text-lg font-bold text-[#070707] mb-2">{benefit.title}</h3>
@@ -324,7 +323,7 @@ export default function Career() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-[#cdf33b]/20 text-[#070707] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-lime-200 text-lime-700 rounded-full text-sm font-semibold mb-6">
                             OPEN POSITIONS
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
@@ -343,13 +342,13 @@ export default function Career() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="bg-[#f5f7f9] rounded-2xl p-6 hover:shadow-lg transition-all border border-transparent hover:border-[#1f66ff]/20"
+                                className="bg-lime-50 rounded-2xl p-6 hover:shadow-lg transition-all border border-lime-100 hover:border-lime-300"
                             >
                                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                                     <div className="flex-1">
                                         <div className="flex items-center gap-3 mb-2">
                                             <h3 className="text-xl font-bold text-[#070707]">{job.title}</h3>
-                                            <span className="text-xs bg-[#1f66ff]/10 text-[#1f66ff] px-2 py-1 rounded-full font-medium">
+                                            <span className="text-xs bg-lime-200 text-lime-700 px-2 py-1 rounded-full font-medium">
                                                 {job.department}
                                             </span>
                                         </div>
@@ -383,7 +382,7 @@ export default function Career() {
                                     <div className="flex-shrink-0">
                                         <a
                                             href={`mailto:careers@wpbun.com?subject=Application for ${job.title}`}
-                                            className="inline-flex items-center gap-2 bg-[#ff176b] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#e01560] transition-colors"
+                                            className="inline-flex items-center gap-2 bg-lime-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-lime-600 transition-colors"
                                         >
                                             Apply Now
                                             <ArrowRight className="w-4 h-4" />
@@ -397,7 +396,7 @@ export default function Career() {
             </section>
 
             {/* Hiring Process Section */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-lime-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -405,13 +404,13 @@ export default function Career() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-[#cdf33b]/20 text-[#cdf33b] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-lime-200 text-lime-700 rounded-full text-sm font-semibold mb-6">
                             OUR PROCESS
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Hiring Process
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-gray-600 max-w-2xl mx-auto">
                             Our hiring process is designed to be transparent and efficient.
                         </p>
                     </motion.div>
@@ -427,15 +426,15 @@ export default function Career() {
                                 className="flex-1 text-center"
                             >
                                 <div className="relative">
-                                    <div className="w-16 h-16 bg-[#cdf33b] rounded-full flex items-center justify-center mx-auto mb-4 text-[#070707] font-bold text-xl">
+                                    <div className="w-16 h-16 bg-lime-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
                                         {item.step}
                                     </div>
                                     {index < timeline.length - 1 && (
-                                        <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-2rem)] h-0.5 bg-[#cdf33b]/20"></div>
+                                        <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-2rem)] h-0.5 bg-lime-300"></div>
                                     )}
                                 </div>
-                                <h3 className="text-white font-bold mb-1">{item.title}</h3>
-                                <p className="text-gray-400 text-sm">{item.description}</p>
+                                <h3 className="text-[#070707] font-bold mb-1">{item.title}</h3>
+                                <p className="text-gray-600 text-sm">{item.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -449,22 +448,22 @@ export default function Career() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-gradient-to-br from-[#1f66ff] to-blue-700 rounded-3xl p-12 text-center text-white"
+                        className="bg-lime-100 rounded-3xl p-12 text-center"
                     >
-                        <Code className="w-12 h-12 mx-auto mb-6" />
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <Code className="w-12 h-12 mx-auto mb-6 text-lime-600" />
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#070707]">
                             Open Source Contributor?
                         </h2>
-                        <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             We value open source contributions! If you've contributed to WordPress core, popular plugins, or other open source projects, we'd love to hear from you. Open source contributors get priority consideration.
                         </p>
-                        <a
-                            href="mailto:careers@wpbun.com?subject=Open Source Contributor Application"
-                            className="inline-flex items-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 bg-lime-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-lime-600 transition-colors"
                         >
                             Get in Touch
                             <ChevronRight className="w-5 h-5" />
-                        </a>
+                        </Link>
                     </motion.div>
                 </div>
             </section>
@@ -478,20 +477,20 @@ export default function Career() {
                         viewport={{ once: true }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <Building className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <Building className="w-12 h-12 mx-auto mb-6 text-lime-600" />
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Don't See the Right Role?
                         </h2>
                         <p className="text-gray-600 text-lg mb-8">
                             We're always looking for talented individuals. Send us your resume and tell us how you can contribute to WPBun.
                         </p>
-                        <a
-                            href="mailto:careers@wpbun.com?subject=General Application"
-                            className="inline-flex items-center gap-2 bg-[#070707] text-white px-8 py-4 rounded-lg font-bold hover:bg-gray-800 transition-colors"
+                        <Link
+                            href="/contact"
+                            className="inline-flex items-center gap-2 bg-lime-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-lime-600 transition-colors"
                         >
                             Send Your Resume
                             <ChevronRight className="w-5 h-5" />
-                        </a>
+                        </Link>
                     </motion.div>
                 </div>
             </section>

@@ -471,7 +471,7 @@ export default function PostX() {
                             <button
                                 onClick={() => setPricingType('yearly')}
                                 className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                                    pricingType === 'yearly' ? 'bg-[#1f66ff] text-white' : 'text-gray-600'
+                                    pricingType === 'yearly' ? 'bg-blue-200 text-[#1f66ff]' : 'text-gray-600'
                                 }`}
                             >
                                 Yearly
@@ -479,7 +479,7 @@ export default function PostX() {
                             <button
                                 onClick={() => setPricingType('lifetime')}
                                 className={`px-6 py-2 rounded-full font-medium transition-colors ${
-                                    pricingType === 'lifetime' ? 'bg-[#1f66ff] text-white' : 'text-gray-600'
+                                    pricingType === 'lifetime' ? 'bg-blue-200 text-[#1f66ff]' : 'text-gray-600'
                                 }`}
                             >
                                 Lifetime
@@ -543,23 +543,23 @@ export default function PostX() {
             </section>
 
             {/* Agency Bundle CTA */}
-            <section className="py-16 bg-[#0242cc]">
+            <section className="py-16 bg-blue-100">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center text-white"
+                        className="text-center"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-6">
                             Want All Plugins? Get the Agency Bundle
                         </h2>
-                        <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
                             Get PostX + 9 more premium plugins for unlimited sites at $749 (Save $800+)
                         </p>
                         <Link
                             href="/agency-bundle"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-[#cdf33b] text-[#070707] font-semibold rounded-lg hover:bg-[#b8e029] transition-colors"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-[#ff176b] text-white font-semibold rounded-lg hover:bg-[#e0155f] transition-colors"
                         >
                             <Zap className="w-5 h-5" />
                             View Agency Bundle

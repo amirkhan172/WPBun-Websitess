@@ -295,32 +295,32 @@ export default function PrivacyPolicy() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 bg-[#f5f7f9]">
+            <section className="py-16 bg-white">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#070707] rounded-3xl p-12 text-center"
+                        className="bg-blue-50 rounded-3xl p-12 text-center"
                     >
-                        <Mail className="w-12 h-12 mx-auto mb-6 text-[#cdf33b]" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <Mail className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Have Questions About Your Privacy?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             We're committed to transparency. If you have any questions about this policy or how we handle your data, please reach out.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors"
                             >
                                 Contact Us
                                 <ChevronRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/data-collection-policy"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition-colors border border-blue-200"
                             >
                                 Data Collection Policy
                             </Link>

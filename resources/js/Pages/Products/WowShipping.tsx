@@ -344,7 +344,7 @@ export default function WowShipping() {
             </section>
 
             {/* Core Features Section */}
-            <section className="py-20 bg-[#f5faff]">
+            <section className="py-20 bg-pink-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -385,7 +385,7 @@ export default function WowShipping() {
             </section>
 
             {/* Why WowShipping */}
-            <section className="py-20 bg-[#f8fafc]">
+            <section className="py-20 bg-gradient-to-r from-gray-50 to-pink-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -508,7 +508,7 @@ export default function WowShipping() {
             </section>
 
             {/* Pricing Section */}
-            <section id="pricing" className="py-20 bg-[#f5f7f9]">
+            <section id="pricing" className="py-20 bg-gradient-to-r from-gray-50 to-pink-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -530,7 +530,7 @@ export default function WowShipping() {
                                 onClick={() => setIsYearly(true)}
                                 className={`px-6 py-2 rounded-full font-semibold transition-all ${
                                     isYearly
-                                        ? 'bg-[#070707] text-white'
+                                        ? 'bg-pink-200 text-pink-700'
                                         : 'text-gray-600 hover:text-[#070707]'
                                 }`}
                             >
@@ -540,7 +540,7 @@ export default function WowShipping() {
                                 onClick={() => setIsYearly(false)}
                                 className={`px-6 py-2 rounded-full font-semibold transition-all ${
                                     !isYearly
-                                        ? 'bg-[#070707] text-white'
+                                        ? 'bg-pink-200 text-pink-700'
                                         : 'text-gray-600 hover:text-[#070707]'
                                 }`}
                             >
@@ -559,13 +559,13 @@ export default function WowShipping() {
                                 transition={{ delay: index * 0.1 }}
                                 className={`relative bg-white rounded-2xl p-8 ${
                                     plan.popular
-                                        ? 'ring-2 ring-orange-500 shadow-xl'
+                                        ? 'ring-2 ring-[#ff176b] shadow-xl'
                                         : 'border border-gray-200'
                                 }`}
                             >
                                 {plan.popular && (
                                     <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                                        <span className="bg-orange-500 text-white px-4 py-1 rounded-full text-sm font-bold">
+                                        <span className="bg-[#ff176b] text-white px-4 py-1 rounded-full text-sm font-bold">
                                             MOST POPULAR
                                         </span>
                                     </div>
@@ -586,7 +586,7 @@ export default function WowShipping() {
                                 <ul className="space-y-3 mb-8">
                                     {plan.features.map((feature, i) => (
                                         <li key={i} className="flex items-center gap-3 text-gray-600">
-                                            <Check className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                                            <Check className="w-5 h-5 text-[#ff176b] flex-shrink-0" />
                                             <span>{feature}</span>
                                         </li>
                                     ))}
@@ -594,7 +594,7 @@ export default function WowShipping() {
                                 <button className={`w-full py-3 rounded-lg font-bold transition-colors ${
                                     plan.popular
                                         ? 'bg-[#ff176b] text-white hover:bg-[#e01560]'
-                                        : 'bg-[#070707] text-white hover:bg-gray-800'
+                                        : 'bg-pink-200 text-pink-700 hover:bg-pink-300'
                                 }`}>
                                     Get Started
                                 </button>

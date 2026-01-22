@@ -358,7 +358,7 @@ export default function WowApps() {
             </section>
 
             {/* Benefits Section */}
-            <section className="py-20 bg-gradient-to-br from-[#070707] to-gray-900 text-white">
+            <section className="py-20 bg-purple-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -366,13 +366,13 @@ export default function WowApps() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-purple-500/20 text-purple-300 rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-semibold mb-6">
                             BENEFITS
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Why Your Business Needs a Mobile App
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-gray-600 max-w-2xl mx-auto">
                             Mobile apps drive engagement, sales, and customer loyalty like nothing else.
                         </p>
                     </motion.div>
@@ -385,13 +385,13 @@ export default function WowApps() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10"
+                                className="bg-white rounded-xl p-6 border border-gray-200"
                             >
-                                <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
-                                    <Check className="w-5 h-5 text-purple-400" />
+                                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                                    <Check className="w-5 h-5 text-purple-600" />
                                 </div>
-                                <h3 className="text-lg font-bold mb-2">{benefit.title}</h3>
-                                <p className="text-gray-400">{benefit.description}</p>
+                                <h3 className="text-lg font-bold text-[#070707] mb-2">{benefit.title}</h3>
+                                <p className="text-gray-600">{benefit.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -501,68 +501,64 @@ export default function WowApps() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className={`rounded-2xl p-6 ${
+                                className={`relative rounded-2xl p-6 bg-white ${
                                     plan.popular
-                                        ? 'bg-gradient-to-br from-purple-600 to-purple-700 text-white ring-4 ring-purple-500/30'
-                                        : 'bg-white border border-gray-200'
+                                        ? 'ring-2 ring-purple-600 shadow-xl'
+                                        : 'border border-gray-200 shadow-sm'
                                 }`}
                             >
                                 {plan.popular && (
-                                    <div className="text-center mb-4">
-                                        <span className="inline-block bg-white text-purple-600 text-xs font-bold px-3 py-1 rounded-full">
-                                            MOST POPULAR
-                                        </span>
+                                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-purple-600 text-white text-sm font-semibold rounded-full">
+                                        Most Popular
                                     </div>
                                 )}
                                 <div className="text-center mb-6">
-                                    <h3 className={`text-xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-[#070707]'}`}>
+                                    <h3 className="text-xl font-bold mb-2 text-[#070707]">
                                         {plan.name}
                                     </h3>
                                     <div className="flex items-center justify-center gap-2">
-                                        <span className={`text-sm line-through ${plan.popular ? 'text-white/60' : 'text-gray-400'}`}>
+                                        <span className="text-sm line-through text-gray-400">
                                             ${plan.originalPrice}
                                         </span>
-                                        <span className={`text-xs px-2 py-0.5 rounded-full ${
-                                            plan.popular ? 'bg-white/20 text-white' : 'bg-green-100 text-green-700'
-                                        }`}>
+                                        <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700">
                                             {plan.discount} OFF
                                         </span>
                                     </div>
                                     <div className="mt-2">
-                                        <span className={`text-4xl font-bold ${plan.popular ? 'text-white' : 'text-[#070707]'}`}>
+                                        <span className="text-4xl font-bold text-[#070707]">
                                             ${plan.price}
                                         </span>
-                                        <span className={plan.popular ? 'text-white/70' : 'text-gray-500'}>
+                                        <span className="text-gray-500">
                                             /{plan.period}
                                         </span>
                                     </div>
                                 </div>
-                                <ul className={`space-y-3 mb-6 ${plan.popular ? 'text-white/90' : 'text-gray-600'}`}>
+                                <ul className="space-y-3 mb-6 text-gray-600">
                                     <li className="flex items-center gap-2">
-                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-white' : 'text-green-500'}`} />
+                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-purple-600' : 'text-purple-600'}`} />
                                         iOS & Android apps
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-white' : 'text-green-500'}`} />
+                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-purple-600' : 'text-purple-600'}`} />
                                         Push notifications
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-white' : 'text-green-500'}`} />
+                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-purple-600' : 'text-purple-600'}`} />
                                         All premium features
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-white' : 'text-green-500'}`} />
+                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-purple-600' : 'text-purple-600'}`} />
                                         {pricingType === 'yearly' ? '1 year updates' : 'Lifetime updates'}
                                     </li>
                                     <li className="flex items-center gap-2">
-                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-white' : 'text-green-500'}`} />
+                                        <Check className={`w-5 h-5 ${plan.popular ? 'text-purple-600' : 'text-purple-600'}`} />
                                         Priority support
                                     </li>
                                 </ul>
                                 <button className={`w-full py-3 rounded-xl font-bold transition-all ${
                                     plan.popular
-                                        ? 'bg-white text-purple-600 hover:bg-gray-100'
-                                        : 'bg-purple-600 text-white hover:bg-purple-700'
+                                        ? 'bg-purple-600 text-white hover:bg-purple-700'
+                                        : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
                                 }`}>
                                     Get Started
                                 </button>
@@ -625,7 +621,7 @@ export default function WowApps() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 bg-gradient-to-br from-purple-600 to-purple-800 text-white">
+            <section className="py-20 bg-purple-100">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -633,24 +629,24 @@ export default function WowApps() {
                         viewport={{ once: true }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <Rocket className="w-16 h-16 mx-auto mb-6" />
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <Rocket className="w-16 h-16 mx-auto mb-6 text-purple-600" />
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[#070707]">
                             Ready to Go Mobile?
                         </h2>
-                        <p className="text-white/80 text-lg mb-8">
+                        <p className="text-gray-600 text-lg mb-8">
                             Join thousands of businesses that have transformed their WordPress sites into powerful mobile apps.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="#pricing"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-700 transition-colors"
                             >
                                 Get Started Now
                                 <ArrowRight className="w-5 h-5" />
                             </a>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-colors border border-white/20"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-colors border border-purple-200"
                             >
                                 Contact Sales
                             </Link>

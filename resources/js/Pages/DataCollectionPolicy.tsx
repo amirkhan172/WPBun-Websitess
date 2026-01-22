@@ -585,26 +585,26 @@ export default function DataCollectionPolicy() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#070707] rounded-3xl p-12 text-center"
+                        className="bg-blue-50 rounded-3xl p-12 text-center"
                     >
-                        <Mail className="w-12 h-12 mx-auto mb-6 text-[#cdf33b]" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <Mail className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Questions About Our Data Practices?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             We're committed to transparency. Contact our privacy team if you have any questions.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
                             >
                                 Contact Privacy Team
                                 <ChevronRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/privacy-policy"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition-colors border border-blue-200"
                             >
                                 Privacy Policy
                             </Link>

@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import {
     Check, X, Star, Shield, Users, Zap, ChevronDown, HelpCircle,
@@ -134,7 +134,7 @@ export default function Pricing() {
                         <div className="inline-flex items-center gap-2 bg-white border border-gray-200 rounded-full px-4 py-2 mb-8 shadow-sm">
                             <div className="flex items-center gap-1">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="w-4 h-4 text-[#00b67a] fill-[#00b67a]" />
+                                    <Star key={i} className="w-4 h-4 text-[#ff176b] fill-[#ff176b]" />
                                 ))}
                             </div>
                             <span className="text-sm text-[#070707] font-medium">
@@ -146,10 +146,9 @@ export default function Pricing() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#070707] mb-6"
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#070707] mb-6"
                         >
-                            Simple, Transparent
-                            <span className="block text-[#1f66ff]">Pricing</span>
+                            Simple, Transparent <span className="text-[#ff176b]">Pricing</span>
                         </motion.h1>
 
                         <motion.p
@@ -182,12 +181,12 @@ export default function Pricing() {
                                 onClick={() => setBillingCycle('bundle')}
                                 className={`px-6 py-2.5 rounded-full font-semibold transition-all flex items-center gap-2 ${
                                     billingCycle === 'bundle'
-                                        ? 'bg-[#070707] text-white'
+                                        ? 'bg-[#ff176b] text-white'
                                         : 'text-gray-600 hover:text-[#070707]'
                                 }`}
                             >
                                 Agency Bundle
-                                <span className="px-2 py-0.5 bg-[#ff176b] text-white text-xs font-bold rounded-full">
+                                <span className="px-2 py-0.5 bg-white text-[#ff176b] text-xs font-bold rounded-full">
                                     SAVE 80%+
                                 </span>
                             </button>
@@ -236,15 +235,15 @@ export default function Pricing() {
                                     </div>
                                     <ul className="space-y-2 mb-6 text-sm">
                                         <li className="flex items-center gap-2 text-gray-600">
-                                            <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                            <Check className="w-4 h-4 text-[#ff176b] flex-shrink-0" />
                                             1 year updates
                                         </li>
                                         <li className="flex items-center gap-2 text-gray-600">
-                                            <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                            <Check className="w-4 h-4 text-[#ff176b] flex-shrink-0" />
                                             Email support
                                         </li>
                                         <li className="flex items-center gap-2 text-gray-600">
-                                            <Check className="w-4 h-4 text-green-500 flex-shrink-0" />
+                                            <Check className="w-4 h-4 text-[#ff176b] flex-shrink-0" />
                                             All features
                                         </li>
                                     </ul>
@@ -296,7 +295,7 @@ export default function Pricing() {
                             animate={{ opacity: 1, y: 0 }}
                             className="text-center mb-16"
                         >
-                            <span className="inline-block px-4 py-2 bg-[#cdf33b]/20 text-[#070707] rounded-full text-sm font-semibold mb-4">
+                            <span className="inline-block px-4 py-2 bg-[#ff176b]/10 text-[#ff176b] rounded-full text-sm font-semibold mb-4">
                                 ALL PLUGINS INCLUDED
                             </span>
                             <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-6">
@@ -361,7 +360,7 @@ export default function Pricing() {
                                             <span className="text-4xl font-bold text-[#070707]">${tier.price}</span>
                                             <span className="text-gray-400 line-through text-lg">${tier.originalPrice}</span>
                                         </div>
-                                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">
+                                        <div className="inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm font-semibold rounded-full">
                                             Save {tier.savings}
                                         </div>
                                         <p className="text-sm text-gray-500 mt-2">One-time payment</p>
@@ -371,7 +370,7 @@ export default function Pricing() {
                                         {tier.features.map((feature) => (
                                             <li key={feature.text} className="flex items-center gap-3 text-gray-600">
                                                 {feature.included ? (
-                                                    <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                                    <CheckCircle className="w-5 h-5 text-[#ff176b] flex-shrink-0" />
                                                 ) : (
                                                     <X className="w-5 h-5 text-gray-300 flex-shrink-0" />
                                                 )}
@@ -386,7 +385,7 @@ export default function Pricing() {
                                         className={`w-full py-3.5 rounded-lg font-bold text-lg transition-colors ${
                                             tier.popular
                                                 ? 'bg-[#ff176b] text-white hover:bg-[#e01560]'
-                                                : 'bg-[#070707] text-white hover:bg-gray-800'
+                                                : 'bg-pink-200 text-pink-700 hover:bg-pink-300'
                                         }`}
                                     >
                                         Get Started
@@ -404,7 +403,7 @@ export default function Pricing() {
                         >
                             {guarantees.map((item) => (
                                 <div key={item.title} className="flex items-center gap-4 bg-[#f5f7f9] rounded-xl p-5">
-                                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#1f66ff] shadow-sm">
+                                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#ff176b] shadow-sm">
                                         {item.icon}
                                     </div>
                                     <div>
@@ -450,7 +449,7 @@ export default function Pricing() {
                                 transition={{ delay: index * 0.1 }}
                                 className="bg-white rounded-2xl p-6 shadow-sm"
                             >
-                                <div className="w-16 h-16 bg-gradient-to-br from-[#1f66ff] to-blue-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
+                                <div className="w-16 h-16 bg-gradient-to-br from-[#ff176b] to-pink-700 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
                                     {stat.icon}
                                 </div>
                                 <div className="text-3xl font-bold text-[#070707] mb-1">{stat.value}</div>
@@ -495,11 +494,21 @@ export default function Pricing() {
                                     <span className="font-semibold text-[#070707] pr-4">{faq.question}</span>
                                     <ChevronDown className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
                                 </button>
-                                {openFaq === index && (
-                                    <div className="px-6 pb-6 text-gray-600">
-                                        {faq.answer}
-                                    </div>
-                                )}
+                                <AnimatePresence>
+                                    {openFaq === index && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-6 pb-6 text-gray-600">
+                                                {faq.answer}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         ))}
                     </div>
@@ -513,18 +522,18 @@ export default function Pricing() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-gradient-to-r from-[#1f66ff] to-blue-700 rounded-2xl p-8 md:p-12 text-center text-white"
+                        className="bg-pink-50 rounded-2xl p-8 md:p-12 text-center border border-[#ff176b]"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             Ready to Get Started?
                         </h2>
-                        <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Join 65,000+ happy users and take your WordPress website to the next level with our premium plugins.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/agency-bundle"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-pink-200 text-pink-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-pink-300 transition-colors"
                             >
                                 <Package className="w-5 h-5" />
                                 Get the Bundle
@@ -532,7 +541,7 @@ export default function Pricing() {
                             </Link>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#ff176b] px-8 py-4 rounded-lg font-bold text-lg border border-[#ff176b] hover:bg-pink-100 transition-colors"
                             >
                                 <HelpCircle className="w-5 h-5" />
                                 Contact Sales

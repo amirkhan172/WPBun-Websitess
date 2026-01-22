@@ -192,15 +192,15 @@ export default function Stats() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="mt-16 bg-[#0242cc] rounded-3xl mx-[25px] p-10 md:p-16"
+                    className="mt-16 bg-blue-100 rounded-3xl mx-[25px] p-10 md:p-16 border border-blue-200"
                 >
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
                         {/* Left Side - Text */}
                         <div className="text-center lg:text-left max-w-xl">
-                            <h3 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-white leading-tight mb-4">
+                            <h3 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-[#070707] leading-tight mb-4">
                                 Grow More Faster with Industry Experts
                             </h3>
-                            <p className="text-white/70 text-lg">
+                            <p className="text-gray-600 text-lg">
                                 Whether you're just getting started or scaling fast, we've got you covered. Access helpful guidance
                             </p>
                         </div>
@@ -210,19 +210,14 @@ export default function Stats() {
                             {/* Quick Support Card */}
                             <a
                                 href="/contact"
-                                className="relative flex flex-col items-center justify-between bg-[rgba(46,72,156,0.7)] hover:bg-[rgb(30,70,200,0.8)] transition-colors rounded-2xl px-10 py-10 h-[240px] w-[240px] overflow-hidden"
+                                className="relative flex flex-col items-center justify-between bg-white hover:bg-blue-50 transition-colors rounded-2xl px-10 py-10 h-[240px] w-[240px] overflow-hidden border border-blue-200"
                             >
-                                {/* Gradient Border */}
-                                <div className="absolute inset-0 rounded-2xl border-2 border-white" style={{
-                                    maskImage: 'linear-gradient(135deg, transparent 0%, black 30%, black 70%, transparent 100%)',
-                                    WebkitMaskImage: 'linear-gradient(135deg, transparent 0%, black 30%, black 70%, transparent 100%)'
-                                }}></div>
-                                <div className="w-40 h-40 bg-[rgba(255,255,255,0.15)] rounded-full flex items-center justify-center -mt-4 mb-4">
+                                <div className="w-40 h-40 bg-blue-50 rounded-full flex items-center justify-center -mt-4 mb-4">
                                     <div className="w-36 h-36 bg-[#1f66ff] rounded-full flex items-center justify-center">
                                         <MessageCircle className="w-16 h-16 text-white" />
                                     </div>
                                 </div>
-                                <span className="text-white text-lg font-semibold bg-white/20 rounded-lg px-4 py-2 mb-2">Quick Support</span>
+                                <span className="text-[#070707] text-lg font-semibold bg-blue-100 rounded-lg px-4 py-2 mb-2">Quick Support</span>
                             </a>
 
                             {/* Join the Community Card */}
@@ -230,19 +225,14 @@ export default function Stats() {
                                 href="https://www.facebook.com/groups/wpxpo"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="relative flex flex-col items-center justify-between bg-[rgb(30,70,200,0.7)] hover:bg-[rgb(30,70,200,0.8)] transition-colors rounded-2xl px-10 py-10 h-[240px] w-[240px] overflow-hidden"
+                                className="relative flex flex-col items-center justify-between bg-white hover:bg-blue-50 transition-colors rounded-2xl px-10 py-10 h-[240px] w-[240px] overflow-hidden border border-blue-200"
                             >
-                                {/* Gradient Border */}
-                                <div className="absolute inset-0 rounded-2xl border-2 border-white" style={{
-                                    maskImage: 'linear-gradient(135deg, transparent 0%, black 30%, black 70%, transparent 100%)',
-                                    WebkitMaskImage: 'linear-gradient(135deg, transparent 0%, black 30%, black 70%, transparent 100%)'
-                                }}></div>
-                                <div className="w-40 h-40 bg-[rgba(255,255,255,0.15)] rounded-full flex items-center justify-center -mt-4 mb-4">
+                                <div className="w-40 h-40 bg-blue-50 rounded-full flex items-center justify-center -mt-4 mb-4">
                                     <div className="w-36 h-36 bg-[#1f66ff] rounded-full flex items-center justify-center">
                                         <Facebook className="w-16 h-16 text-white" />
                                     </div>
                                 </div>
-                                <span className="text-white text-lg font-semibold bg-white/20 rounded-lg px-4 py-2 whitespace-nowrap mb-2">Join the Community</span>
+                                <span className="text-[#070707] text-lg font-semibold bg-blue-100 rounded-lg px-4 py-2 whitespace-nowrap mb-2">Join the Community</span>
                             </a>
                         </div>
                     </div>

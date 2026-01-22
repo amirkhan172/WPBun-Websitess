@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { HelpCircle, ChevronDown, Search, MessageCircle, BookOpen, CreditCard, Settings, Package, LifeBuoy, Mail, ChevronRight, Zap } from 'lucide-react';
 
@@ -169,10 +169,9 @@ export default function FAQ() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#070707] mb-6"
+                            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#070707] mb-6"
                         >
-                            Frequently Asked
-                            <span className="block text-[#1f66ff]">Questions</span>
+                            Frequently Asked <span className="text-[#1f66ff]">Questions</span>
                         </motion.h1>
 
                         <motion.p
@@ -230,7 +229,7 @@ export default function FAQ() {
                                                 }}
                                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-all ${
                                                     activeCategory === category.id
-                                                        ? 'bg-[#1f66ff] text-white'
+                                                        ? 'bg-blue-300 text-blue-800'
                                                         : 'text-gray-600 hover:bg-white hover:text-[#1f66ff]'
                                                 }`}
                                             >
@@ -283,16 +282,21 @@ export default function FAQ() {
                                             <span className="font-semibold text-[#070707] pr-4">{faq.question}</span>
                                             <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
                                         </button>
-                                        {openFaq === index && (
-                                            <motion.div
-                                                initial={{ opacity: 0, height: 0 }}
-                                                animate={{ opacity: 1, height: 'auto' }}
-                                                exit={{ opacity: 0, height: 0 }}
-                                                className="px-6 pb-5"
-                                            >
-                                                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                                            </motion.div>
-                                        )}
+                                        <AnimatePresence>
+                                            {openFaq === index && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, height: 0 }}
+                                                    animate={{ opacity: 1, height: 'auto' }}
+                                                    exit={{ opacity: 0, height: 0 }}
+                                                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                                    className="overflow-hidden"
+                                                >
+                                                    <div className="px-6 pb-5">
+                                                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                                                    </div>
+                                                </motion.div>
+                                            )}
+                                        </AnimatePresence>
                                     </motion.div>
                                 ))}
                             </div>
@@ -386,18 +390,18 @@ export default function FAQ() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#070707] rounded-3xl p-12 text-center"
+                        className="bg-blue-50 rounded-3xl p-12 text-center"
                     >
-                        <Zap className="w-12 h-12 mx-auto mb-6 text-[#cdf33b]" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <Zap className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Still Have Questions?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Can't find the answer you're looking for? Our support team is here to help.
                         </p>
                         <Link
                             href="/contact"
-                            className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                            className="inline-flex items-center justify-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
                         >
                             Contact Support
                             <ChevronRight className="w-5 h-5" />

@@ -432,7 +432,7 @@ export default function WowAddons() {
                             <button
                                 onClick={() => setIsYearly(true)}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    isYearly ? 'bg-[#070707] text-white' : 'text-gray-600 hover:text-[#070707]'
+                                    isYearly ? 'bg-green-200 text-green-700' : 'text-gray-600 hover:text-[#070707]'
                                 }`}
                             >
                                 Yearly
@@ -440,7 +440,7 @@ export default function WowAddons() {
                             <button
                                 onClick={() => setIsYearly(false)}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    !isYearly ? 'bg-[#070707] text-white' : 'text-gray-600 hover:text-[#070707]'
+                                    !isYearly ? 'bg-green-200 text-green-700' : 'text-gray-600 hover:text-[#070707]'
                                 }`}
                             >
                                 Lifetime
@@ -457,11 +457,11 @@ export default function WowAddons() {
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
                                 className={`relative bg-white rounded-2xl p-6 border-2 ${
-                                    plan.popular ? 'border-[#ff176b] shadow-xl' : 'border-gray-200'
+                                    plan.popular ? 'border-green-500 shadow-xl' : 'border-gray-200'
                                 }`}
                             >
                                 {plan.popular && (
-                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#ff176b] text-white text-xs font-bold px-3 py-1 rounded-full">
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                                         MOST POPULAR
                                     </div>
                                 )}
@@ -491,8 +491,8 @@ export default function WowAddons() {
                                 <button
                                     className={`w-full py-3 rounded-lg font-semibold transition-colors ${
                                         plan.popular
-                                            ? 'bg-[#ff176b] text-white hover:bg-[#e01560]'
-                                            : 'bg-[#070707] text-white hover:bg-gray-800'
+                                            ? 'bg-green-500 text-white hover:bg-green-600'
+                                            : 'bg-green-200 text-green-700 hover:bg-green-300'
                                     }`}
                                 >
                                     Get Started
@@ -527,7 +527,7 @@ export default function WowAddons() {
                         </div>
                         <Link
                             href="/agency-bundle"
-                            className="inline-flex items-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#bfe435] transition-colors"
+                            className="inline-flex items-center gap-2 bg-green-400 text-white px-8 py-4 rounded-lg font-bold hover:bg-green-500 transition-colors"
                         >
                             View Agency Bundle
                             <ArrowRight className="w-5 h-5" />

@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import AppLayout from '@/Layouts/AppLayout';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { ShoppingCart, HelpCircle, ChevronDown, CheckCircle, Package, CreditCard, RefreshCw, Shield, Zap, Users, Award, Mail, MessageCircle, Phone, ChevronRight, ArrowRight, Sparkles, Star } from 'lucide-react';
 
@@ -230,16 +230,21 @@ export default function PreSales() {
                                     <span className="font-semibold text-[#070707] pr-4">{faq.question}</span>
                                     <ChevronDown className={`w-5 h-5 text-gray-400 flex-shrink-0 mt-0.5 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
                                 </button>
-                                {openFaq === index && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="px-6 pb-5"
-                                    >
-                                        <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                                    </motion.div>
-                                )}
+                                <AnimatePresence>
+                                    {openFaq === index && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                                            className="overflow-hidden"
+                                        >
+                                            <div className="px-6 pb-5">
+                                                <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
                             </motion.div>
                         ))}
                     </div>
@@ -255,7 +260,7 @@ export default function PreSales() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-white text-[#ff176b] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-[#1f66ff]/10 text-[#1f66ff] rounded-full text-sm font-semibold mb-6">
                             CHOOSE YOUR PRODUCT
                         </span>
                         <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
@@ -314,7 +319,7 @@ export default function PreSales() {
                     >
                         <Link
                             href="/pricing"
-                            className="inline-flex items-center gap-2 bg-[#1f66ff] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#1a56db] transition-colors"
+                            className="inline-flex items-center gap-2 bg-blue-200 text-blue-700 px-6 py-3 rounded-lg font-semibold hover:bg-blue-300 transition-colors"
                         >
                             View All Pricing
                             <ChevronRight className="w-5 h-5" />
@@ -382,33 +387,33 @@ export default function PreSales() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="bg-[#1f66ff] rounded-2xl p-8 text-white relative overflow-hidden"
+                            className="bg-blue-50 rounded-2xl p-8 relative border-2 border-[#1f66ff]"
                         >
-                            <div className="absolute top-4 right-4">
-                                <span className="bg-[#cdf33b] text-[#070707] text-xs font-bold px-2 py-1 rounded-full">POPULAR</span>
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                                <span className="bg-[#1f66ff] text-white text-xs font-bold px-4 py-1 rounded-full">POPULAR</span>
                             </div>
-                            <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4">
-                                <Zap className="w-7 h-7 text-white" />
+                            <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                                <Zap className="w-7 h-7 text-[#1f66ff]" />
                             </div>
-                            <h3 className="text-xl font-bold mb-2">Unlimited Sites</h3>
-                            <p className="text-white/80 text-sm mb-4">
+                            <h3 className="text-xl font-bold text-[#070707] mb-2">Unlimited Sites</h3>
+                            <p className="text-gray-600 text-sm mb-4">
                                 Ideal for freelancers and developers with multiple projects.
                             </p>
                             <ul className="space-y-2 text-sm">
-                                <li className="flex items-center gap-2 text-white/90">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     Unlimited activations
                                 </li>
-                                <li className="flex items-center gap-2 text-white/90">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     All premium features
                                 </li>
-                                <li className="flex items-center gap-2 text-white/90">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     1 year of updates
                                 </li>
-                                <li className="flex items-center gap-2 text-white/90">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     Priority support
                                 </li>
                             </ul>
@@ -419,30 +424,30 @@ export default function PreSales() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-gradient-to-br from-[#070707] to-gray-800 rounded-2xl p-8 text-white"
+                            className="bg-[#f5f7f9] rounded-2xl p-8"
                         >
-                            <div className="w-14 h-14 bg-[#cdf33b] rounded-xl flex items-center justify-center mb-4">
-                                <Award className="w-7 h-7 text-[#070707]" />
+                            <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+                                <Award className="w-7 h-7 text-[#1f66ff]" />
                             </div>
-                            <h3 className="text-xl font-bold mb-2">Agency Bundle</h3>
-                            <p className="text-gray-400 text-sm mb-4">
+                            <h3 className="text-xl font-bold text-[#070707] mb-2">Agency Bundle</h3>
+                            <p className="text-gray-600 text-sm mb-4">
                                 Best value for agencies - includes all products forever.
                             </p>
                             <ul className="space-y-2 text-sm">
-                                <li className="flex items-center gap-2 text-gray-300">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     All products included
                                 </li>
-                                <li className="flex items-center gap-2 text-gray-300">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     Unlimited sites
                                 </li>
-                                <li className="flex items-center gap-2 text-gray-300">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     Lifetime updates
                                 </li>
-                                <li className="flex items-center gap-2 text-gray-300">
-                                    <CheckCircle className="w-4 h-4 text-[#cdf33b]" />
+                                <li className="flex items-center gap-2 text-gray-600">
+                                    <CheckCircle className="w-4 h-4 text-[#1f66ff]" />
                                     VIP support
                                 </li>
                             </ul>
@@ -452,32 +457,32 @@ export default function PreSales() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-16 bg-[#f5f7f9]">
+            <section className="py-16 bg-white">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#070707] rounded-3xl p-12 text-center"
+                        className="bg-blue-50 rounded-3xl p-12 text-center"
                     >
-                        <Sparkles className="w-12 h-12 mx-auto mb-6 text-[#cdf33b]" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <Sparkles className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Still Have Questions?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Our pre-sales team is ready to help you find the perfect solution. Don't hesitate to reach out!
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="mailto:presales@wpbun.com?subject=Pre-Sales Question"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                            <Link
+                                href="/contact"
+                                className="inline-flex items-center justify-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
                             >
                                 <Mail className="w-5 h-5" />
-                                Email Pre-Sales Team
-                            </a>
+                                Contact Pre-Sales Team
+                            </Link>
                             <Link
                                 href="/products"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition-colors border border-blue-200"
                             >
                                 Browse Products
                                 <ChevronRight className="w-5 h-5" />

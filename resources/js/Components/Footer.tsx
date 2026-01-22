@@ -92,7 +92,7 @@ export default function Footer() {
                     {/* Footer Links */}
                     {footerSections.map((section) => (
                         <div key={section.title} className="pl-28">
-                            <h4 className="text-xl font-semibold text-black mb-5">{section.title}</h4>
+                            <h4 className="text-xl font-semibold text-black mb-5 whitespace-nowrap">{section.title}</h4>
                             <ul className="space-y-6">
                                 {section.links.map((link) => (
                                     <li key={link.label}>
