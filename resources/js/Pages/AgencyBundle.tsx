@@ -182,7 +182,7 @@ export default function AgencyBundle() {
             <Head title="Agency Bundle - WPBun" />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 bg-gradient-to-b from-secondary via-gray-900 to-secondary text-white">
+            <section className="pt-32 pb-20 bg-[#f8fafc]">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -190,29 +190,29 @@ export default function AgencyBundle() {
                         transition={{ duration: 0.5 }}
                         className="text-center max-w-4xl mx-auto"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/20 text-accent rounded-full text-sm font-medium mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#1f66ff]/10 text-[#1f66ff] rounded-full text-sm font-medium mb-6">
                             <Sparkles className="w-4 h-4" />
                             Limited Time Offer
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#070707]">
                             Unlock More Growth With Our Ultimate Bundle
                         </h1>
-                        <p className="text-xl text-gray-300 mb-8">
+                        <p className="text-xl text-gray-700 mb-8">
                             One single payment, lifetime access - save $800+ on premium WordPress & WooCommerce tools.
                         </p>
 
                         {/* Trust Indicators */}
-                        <div className="flex flex-wrap items-center justify-center gap-6 mb-10">
+                        <div className="flex flex-wrap items-center justify-center gap-6 mb-10 text-[#070707]">
                             <div className="flex items-center gap-2">
-                                <Users className="w-5 h-5 text-accent" />
+                                <Users className="w-5 h-5 text-[#1f66ff]" />
                                 <span>65K+ users</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                                <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" />
                                 <span>4.9/5 from 340+ reviews</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Shield className="w-5 h-5 text-green-400" />
+                                <Shield className="w-5 h-5 text-green-500" />
                                 <span>14-day money-back</span>
                             </div>
                         </div>

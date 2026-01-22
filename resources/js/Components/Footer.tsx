@@ -170,24 +170,24 @@ export default function Footer() {
                         </div>
 
                         <div className="flex items-center gap-6 text-lg">
-                            <a
-                                href="#"
+                            <Link
+                                href="/privacy-policy"
                                 className="text-gray-600 text-lg hover:text-[#1f66ff] transition-colors whitespace-nowrap"
                             >
                                 Privacy Policy
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                href="/terms-conditions"
                                 className="text-gray-600 text-lg hover:text-[#1f66ff] transition-colors whitespace-nowrap"
                             >
                                 Terms of Service
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                href="/refund-policy"
                                 className="text-gray-600 text-lg hover:text-[#1f66ff] transition-colors whitespace-nowrap"
                             >
                                 Refund Policy
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

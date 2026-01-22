@@ -102,12 +102,12 @@ export default function Stats() {
                                     : 'border border-gray-300'
                                 }`}
                         >
-                            <div className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-3 ${
+                            <div className={`text-6xl md:text-7xl lg:text-8xl font-bold mb-3 ${
                                 stat.value === '65K+' ? 'text-white' : 'text-[#1f66ff]'
                             }`}>
                                 {stat.value}
                             </div>
-                            <p className={`text-lg md:text-xl lg:text-2xl ${
+                            <p className={`text-xl md:text-2xl lg:text-3xl ${
                                 stat.value === '65K+' ? 'text-white' : 'text-gray-600'
                             }`}>{stat.label}</p>
 

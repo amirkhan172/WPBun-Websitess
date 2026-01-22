@@ -75,6 +75,23 @@ Route::get('/products/wowshipping', function () {
     return Inertia::render('Products/WowShipping');
 })->name('products.wowshipping');
 
+Route::get('/products/wowapps', function () {
+    return Inertia::render('Products/WowApps');
+})->name('products.wowapps');
+
+// Company Pages
+Route::get('/career', fn() => Inertia::render('Career'))->name('career');
+Route::get('/affiliates', fn() => Inertia::render('Affiliates'))->name('affiliates');
+Route::get('/privacy-policy', fn() => Inertia::render('PrivacyPolicy'))->name('privacy-policy');
+Route::get('/terms-conditions', fn() => Inertia::render('TermsConditions'))->name('terms-conditions');
+Route::get('/refund-policy', fn() => Inertia::render('RefundPolicy'))->name('refund-policy');
+Route::get('/affiliates-policy', fn() => Inertia::render('AffiliatesPolicy'))->name('affiliates-policy');
+
+// Quick Info Pages
+Route::get('/faq', fn() => Inertia::render('FAQ'))->name('faq');
+Route::get('/data-collection-policy', fn() => Inertia::render('DataCollectionPolicy'))->name('data-collection-policy');
+Route::get('/pre-sales', fn() => Inertia::render('PreSales'))->name('pre-sales');
+
 // Authenticated Routes
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
