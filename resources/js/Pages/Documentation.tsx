@@ -421,7 +421,7 @@ export default function Documentation() {
             </section>
 
             {/* Help Section */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-blue-100">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -429,30 +429,30 @@ export default function Documentation() {
                         viewport={{ once: true }}
                         className="text-center max-w-3xl mx-auto"
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#cdf33b]/20 text-[#cdf33b] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#1f66ff]/10 text-[#1f66ff] px-4 py-2 rounded-full text-sm font-semibold mb-6">
                             <Headphones className="w-5 h-5" />
                             NEED HELP?
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-6">
                             Can't Find What You're Looking For?
                         </h2>
 
-                        <p className="text-gray-400 text-lg mb-10">
+                        <p className="text-gray-600 text-lg mb-10">
                             Our support team is here to help you with any questions or issues you may have. We typically respond within 24 hours.
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#1a56db] transition-colors"
                             >
                                 <Headphones className="w-5 h-5" />
                                 Contact Support
                             </Link>
                             <Link
                                 href="/community"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold text-lg border border-gray-200 hover:border-[#1f66ff] hover:text-[#1f66ff] transition-colors"
                             >
                                 <MessageCircle className="w-5 h-5" />
                                 Join Community

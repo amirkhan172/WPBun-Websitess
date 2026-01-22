@@ -83,12 +83,80 @@ const blogPosts = [
         readTime: '9 min read',
         featured: false,
     },
+    {
+        id: 7,
+        title: 'Building Custom WooCommerce Checkout Pages',
+        excerpt: 'A comprehensive guide to creating optimized checkout experiences that boost conversions.',
+        category: 'WowStore',
+        author: 'Alex Turner',
+        authorAvatar: 'AT',
+        date: 'Jan 1, 2026',
+        readTime: '11 min read',
+        featured: false,
+    },
+    {
+        id: 8,
+        title: 'WordPress Security Best Practices for 2026',
+        excerpt: 'Protect your WordPress site with these essential security tips and recommended plugins.',
+        category: 'WordPress',
+        author: 'Lisa Chen',
+        authorAvatar: 'LC',
+        date: 'Dec 28, 2025',
+        readTime: '7 min read',
+        featured: false,
+    },
+    {
+        id: 9,
+        title: 'Mastering WooCommerce Discount Rules',
+        excerpt: 'Learn how to create powerful discount campaigns using WowRevenue to increase sales.',
+        category: 'WowRevenue',
+        author: 'Mark Wilson',
+        authorAvatar: 'MW',
+        date: 'Dec 25, 2025',
+        readTime: '13 min read',
+        featured: false,
+    },
+    {
+        id: 10,
+        title: 'PostX Templates: Complete Guide',
+        excerpt: 'Explore all the pre-built templates in PostX and learn how to customize them for your needs.',
+        category: 'PostX',
+        author: 'Rachel Green',
+        authorAvatar: 'RG',
+        date: 'Dec 22, 2025',
+        readTime: '10 min read',
+        featured: false,
+    },
+    {
+        id: 11,
+        title: 'WooCommerce B2B Store Setup Guide',
+        excerpt: 'Complete walkthrough for setting up a wholesale store using WholesaleX plugin.',
+        category: 'WholesaleX',
+        author: 'Tom Hardy',
+        authorAvatar: 'TH',
+        date: 'Dec 20, 2025',
+        readTime: '14 min read',
+        featured: false,
+    },
+    {
+        id: 12,
+        title: 'Speed Optimization for WooCommerce Stores',
+        excerpt: 'Tips and tricks to make your WooCommerce store lightning fast for better user experience.',
+        category: 'WooCommerce',
+        author: 'Nina Patel',
+        authorAvatar: 'NP',
+        date: 'Dec 18, 2025',
+        readTime: '9 min read',
+        featured: false,
+    },
 ];
 
 export default function Blog() {
     const [activeCategory, setActiveCategory] = useState('All');
     const [searchQuery, setSearchQuery] = useState('');
     const [email, setEmail] = useState('');
+    const [visiblePosts, setVisiblePosts] = useState(3);
+    const postsPerLoad = 3;
 
     const filteredPosts = blogPosts.filter((post) => {
         const matchesCategory = activeCategory === 'All' || post.category === activeCategory;
@@ -98,7 +166,23 @@ export default function Blog() {
     });
 
     const featuredPosts = filteredPosts.filter((post) => post.featured);
-    const regularPosts = filteredPosts.filter((post) => !post.featured);
+    const allRegularPosts = filteredPosts.filter((post) => !post.featured);
+    const regularPosts = allRegularPosts.slice(0, visiblePosts);
+    const hasMorePosts = visiblePosts < allRegularPosts.length;
+
+    const handleLoadMore = () => {
+        setVisiblePosts((prev) => prev + postsPerLoad);
+    };
+
+    const handleCategoryChange = (category: string) => {
+        setActiveCategory(category);
+        setVisiblePosts(3);
+    };
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+        setVisiblePosts(3);
+    };
 
     const handleNewsletterSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -158,7 +242,7 @@ export default function Blog() {
                                 type="text"
                                 placeholder="Search articles..."
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={handleSearchChange}
                                 className="w-full pl-14 pr-6 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1f66ff] focus:border-[#1f66ff] transition-colors shadow-lg text-lg"
                             />
                         </motion.div>
@@ -173,10 +257,10 @@ export default function Blog() {
                         {categories.map((category) => (
                             <button
                                 key={category}
-                                onClick={() => setActiveCategory(category)}
+                                onClick={() => handleCategoryChange(category)}
                                 className={`px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                                     activeCategory === category
-                                        ? 'bg-[#070707] text-white'
+                                        ? 'bg-blue-200 text-[#1f66ff]'
                                         : 'bg-[#f5f7f9] text-gray-600 hover:bg-gray-200'
                                 }`}
                             >
@@ -213,9 +297,9 @@ export default function Blog() {
                                     transition={{ delay: index * 0.1 }}
                                     className="group cursor-pointer"
                                 >
-                                    <div className="bg-gradient-to-br from-[#1f66ff] to-blue-700 rounded-2xl aspect-video mb-5 overflow-hidden relative">
+                                    <div className="bg-blue-100 rounded-2xl aspect-video mb-5 overflow-hidden relative">
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-white/50 text-lg font-semibold">Featured Image</span>
+                                            <span className="text-blue-300 text-lg font-semibold">Featured Image</span>
                                         </div>
                                         <div className="absolute top-4 left-4">
                                             <span className="px-3 py-1.5 bg-white text-[#070707] text-xs font-bold rounded-full">
@@ -273,12 +357,12 @@ export default function Blog() {
                                     transition={{ delay: index * 0.05 }}
                                     className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group cursor-pointer"
                                 >
-                                    <div className="bg-gradient-to-br from-gray-100 to-gray-200 aspect-video relative">
+                                    <div className="bg-blue-100 aspect-video relative">
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <span className="text-gray-400">Post Image</span>
+                                            <span className="text-blue-300">Post Image</span>
                                         </div>
                                         <div className="absolute top-3 left-3">
-                                            <span className="px-2.5 py-1 bg-[#070707] text-white text-xs font-semibold rounded-full">
+                                            <span className="px-2.5 py-1 bg-blue-100 text-[#1f66ff] text-xs font-semibold rounded-full">
                                                 {post.category}
                                             </span>
                                         </div>
@@ -307,9 +391,12 @@ export default function Blog() {
                         </div>
                     )}
 
-                    {regularPosts.length > 0 && (
+                    {hasMorePosts && (
                         <div className="text-center mt-12">
-                            <button className="inline-flex items-center gap-2 bg-[#070707] text-white px-8 py-4 rounded-lg font-bold hover:bg-gray-800 transition-colors">
+                            <button
+                                onClick={handleLoadMore}
+                                className="inline-flex items-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
+                            >
                                 Load More Articles
                                 <ChevronRight className="w-5 h-5" />
                             </button>
@@ -319,7 +406,7 @@ export default function Blog() {
             </section>
 
             {/* Newsletter Section */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-blue-100">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -327,13 +414,13 @@ export default function Blog() {
                         viewport={{ once: true }}
                         className="text-center max-w-2xl mx-auto"
                     >
-                        <div className="w-16 h-16 bg-[#cdf33b]/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <Mail className="w-8 h-8 text-[#cdf33b]" />
+                        <div className="w-16 h-16 bg-[#1f66ff]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                            <Mail className="w-8 h-8 text-[#1f66ff]" />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Subscribe to Our Newsletter
                         </h2>
-                        <p className="text-gray-400 mb-8 text-lg">
+                        <p className="text-gray-600 mb-8 text-lg">
                             Get the latest WordPress tips, WooCommerce guides, and exclusive deals delivered directly to your inbox.
                         </p>
                         <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -343,11 +430,11 @@ export default function Blog() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="px-6 py-4 rounded-xl text-[#070707] w-full sm:w-80 focus:ring-2 focus:ring-[#cdf33b] focus:outline-none text-lg"
+                                className="px-6 py-4 rounded-xl text-[#070707] bg-white border border-gray-200 w-full sm:w-80 focus:ring-2 focus:ring-[#1f66ff] focus:outline-none text-lg"
                             />
                             <button
                                 type="submit"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#d8f655] transition-colors whitespace-nowrap"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#1a56db] transition-colors whitespace-nowrap"
                             >
                                 Subscribe
                                 <ArrowRight className="w-5 h-5" />

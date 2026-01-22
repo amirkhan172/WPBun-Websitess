@@ -139,14 +139,14 @@ export default function WowRevenue() {
             <Head title="WowRevenue - Product Bundles & Discount Campaigns | WPBun" />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-20 bg-gradient-to-b from-[#fff5f7] to-white overflow-hidden">
+            <section className="pt-32 pb-20 bg-gradient-to-b from-[#fffbfc] to-white overflow-hidden">
                 <div className="container-custom">
                     <div className="max-w-4xl mx-auto text-center">
                         {/* Trust Badge */}
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            className="inline-flex items-center gap-2 bg-white border border-pink-200 rounded-full px-4 py-2 mb-8 shadow-sm"
+                            className="inline-flex items-center gap-2 bg-white border border-pink-100 rounded-full px-4 py-2 mb-8 shadow-sm"
                         >
                             <div className="flex items-center gap-1">
                                 {[...Array(5)].map((_, i) => (
@@ -165,7 +165,7 @@ export default function WowRevenue() {
                             transition={{ delay: 0.1 }}
                             className="flex items-center justify-center gap-3 mb-6"
                         >
-                            <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center text-white shadow-lg">
+                            <div className="w-16 h-16 bg-gradient-to-br from-pink-400 to-rose-500 rounded-2xl flex items-center justify-center text-white shadow-lg">
                                 <DollarSign className="w-8 h-8" />
                             </div>
                             <div className="text-left">
@@ -173,7 +173,7 @@ export default function WowRevenue() {
                                     <h1 className="text-3xl font-bold text-[#070707]">WowRevenue</h1>
                                     <span className="px-2 py-0.5 bg-orange-100 text-orange-600 text-xs font-bold uppercase rounded-full">Hot</span>
                                 </div>
-                                <p className="text-pink-600 font-medium">Product Bundles & Discounts</p>
+                                <p className="text-pink-500 font-medium">Product Bundles & Discounts</p>
                             </div>
                         </motion.div>
 
@@ -185,7 +185,7 @@ export default function WowRevenue() {
                         >
                             Boost Revenue with
                             <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-600">
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-500">
                                 Smart Discount Campaigns
                             </span>
                         </motion.h2>
@@ -207,7 +207,7 @@ export default function WowRevenue() {
                             className="flex flex-wrap justify-center gap-8 mb-10"
                         >
                             <div className="flex items-center gap-2">
-                                <Users className="w-5 h-5 text-pink-600" />
+                                <Users className="w-5 h-5 text-pink-400" />
                                 <span className="font-bold text-[#070707]">15K+</span>
                                 <span className="text-gray-600">Happy Users</span>
                             </div>
@@ -217,7 +217,7 @@ export default function WowRevenue() {
                                 <span className="text-gray-600">5-Star Ratings</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <TrendingUp className="w-5 h-5 text-pink-600" />
+                                <TrendingUp className="w-5 h-5 text-pink-400" />
                                 <span className="font-bold text-[#070707]">35%</span>
                                 <span className="text-gray-600">Avg AOV Increase</span>
                             </div>
@@ -232,12 +232,12 @@ export default function WowRevenue() {
                         >
                             <Link
                                 href="/pricing"
-                                className="bg-[#ff176b] hover:bg-[#e01560] text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 shadow-lg shadow-pink-500/25"
+                                className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 shadow-lg shadow-pink-400/25"
                             >
                                 Buy Now
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
-                            <button className="bg-white border-2 border-gray-200 text-[#070707] px-8 py-4 rounded-lg font-semibold hover:border-pink-500 hover:text-pink-600 transition-colors inline-flex items-center justify-center gap-2">
+                            <button className="bg-white border-2 border-gray-200 text-[#070707] px-8 py-4 rounded-lg font-semibold hover:border-pink-500 hover:text-pink-500 transition-colors inline-flex items-center justify-center gap-2">
                                 <Play className="w-5 h-5" />
                                 Try Live Demo
                             </button>
@@ -288,7 +288,7 @@ export default function WowRevenue() {
             </section>
 
             {/* Features Section */}
-            <section className="py-20 bg-[#f5f7f9]">
+            <section className="py-20 bg-gradient-to-b from-[#f5f7f9] to-pink-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -325,8 +325,8 @@ export default function WowRevenue() {
                 </div>
             </section>
 
-            {/* Benefits Grid - Dark Section */}
-            <section className="py-20 bg-gradient-to-br from-[#070707] to-gray-900 text-white">
+            {/* Benefits Grid */}
+            <section className="py-20 bg-pink-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -334,13 +334,13 @@ export default function WowRevenue() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="inline-block px-4 py-2 bg-white/10 text-pink-400 rounded-full text-sm font-semibold mb-4">
+                        <span className="inline-block px-4 py-2 bg-pink-100 text-pink-500 rounded-full text-sm font-semibold mb-4">
                             WHY WOWREVENUE
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Grow Your Business
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-gray-600 max-w-2xl mx-auto">
                             Join 15,000+ store owners who increased their revenue with WowRevenue
                         </p>
                     </motion.div>
@@ -353,10 +353,10 @@ export default function WowRevenue() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-center gap-3"
+                                className="bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3"
                             >
-                                <Check className="w-5 h-5 text-pink-400 flex-shrink-0" />
-                                <span className="text-sm font-medium">{benefit}</span>
+                                <Check className="w-5 h-5 text-pink-500 flex-shrink-0" />
+                                <span className="text-sm font-medium text-[#070707]">{benefit}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -432,7 +432,7 @@ export default function WowRevenue() {
                             <button
                                 onClick={() => setIsYearly(true)}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    isYearly ? 'bg-[#070707] text-white' : 'text-gray-600 hover:text-[#070707]'
+                                    isYearly ? 'bg-pink-100 text-pink-600' : 'text-gray-600 hover:text-pink-600'
                                 }`}
                             >
                                 Yearly
@@ -440,7 +440,7 @@ export default function WowRevenue() {
                             <button
                                 onClick={() => setIsYearly(false)}
                                 className={`px-6 py-2 rounded-full font-medium transition-all ${
-                                    !isYearly ? 'bg-[#070707] text-white' : 'text-gray-600 hover:text-[#070707]'
+                                    !isYearly ? 'bg-pink-100 text-pink-600' : 'text-gray-600 hover:text-pink-600'
                                 }`}
                             >
                                 Lifetime
@@ -492,7 +492,7 @@ export default function WowRevenue() {
                                     className={`w-full py-3 rounded-lg font-semibold transition-colors ${
                                         plan.popular
                                             ? 'bg-[#ff176b] text-white hover:bg-[#e01560]'
-                                            : 'bg-[#070707] text-white hover:bg-gray-800'
+                                            : 'bg-pink-100 text-pink-600 hover:bg-pink-200'
                                     }`}
                                 >
                                     Get Started
@@ -506,28 +506,28 @@ export default function WowRevenue() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mt-16 bg-gradient-to-r from-[#070707] to-gray-800 rounded-2xl p-8 md:p-12 text-center text-white"
+                        className="mt-16 bg-pink-100 border-[3px] border-gray-300 rounded-2xl p-8 md:p-12 text-center"
                     >
                         <div className="flex items-center justify-center gap-2 mb-4">
-                            <Zap className="w-6 h-6 text-[#cdf33b]" />
-                            <span className="text-[#cdf33b] font-semibold">BEST VALUE</span>
+                            <Zap className="w-6 h-6 text-pink-500" />
+                            <span className="text-pink-500 font-semibold">BEST VALUE</span>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h3 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             Get WowRevenue + 9 More Plugins
                         </h3>
-                        <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                             Save over 80% with our Agency Bundle. Get all 10 premium plugins for unlimited sites at one incredible price.
                         </p>
                         <div className="flex items-center justify-center gap-4 mb-6">
-                            <span className="text-4xl font-bold">$749</span>
-                            <span className="text-gray-400 line-through">$3,500+</span>
-                            <span className="bg-[#cdf33b] text-[#070707] px-3 py-1 rounded-full text-sm font-bold">
+                            <span className="text-4xl font-bold text-[#070707]">$749</span>
+                            <span className="text-gray-500 line-through">$3,500+</span>
+                            <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                 LIFETIME
                             </span>
                         </div>
                         <Link
                             href="/agency-bundle"
-                            className="inline-flex items-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#bfe435] transition-colors"
+                            className="inline-flex items-center gap-2 bg-pink-500 text-white px-8 py-4 rounded-lg font-bold hover:bg-pink-600 transition-colors"
                         >
                             View Agency Bundle
                             <ArrowRight className="w-5 h-5" />
@@ -585,25 +585,25 @@ export default function WowRevenue() {
             {/* Final CTA */}
             <section className="py-16 bg-[#f5f7f9]">
                 <div className="container-custom">
-                    <div className="bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl p-8 md:p-12 text-center text-white">
-                        <Shield className="w-16 h-16 mx-auto mb-6" />
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                    <div className="bg-pink-100 border-2 border-gray-300 rounded-2xl p-8 md:p-12 text-center">
+                        <Shield className="w-16 h-16 mx-auto mb-6 text-pink-500" />
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             14-Day Money-Back Guarantee
                         </h2>
-                        <p className="text-pink-100 max-w-2xl mx-auto mb-8">
+                        <p className="text-gray-600 max-w-2xl mx-auto mb-8">
                             Try WowRevenue risk-free. If you don't see an increase in your revenue within 14 days, we'll refund your purchase - no questions asked.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/pricing"
-                                className="bg-white text-pink-600 px-8 py-4 rounded-lg font-semibold hover:bg-pink-50 transition-colors inline-flex items-center justify-center gap-2"
+                                className="bg-pink-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-pink-600 transition-colors inline-flex items-center justify-center gap-2"
                             >
                                 Get WowRevenue Pro
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/documentation"
-                                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                                className="border-2 border-pink-500 text-pink-500 px-8 py-4 rounded-lg font-semibold hover:bg-pink-50 transition-colors"
                             >
                                 View Documentation
                             </Link>

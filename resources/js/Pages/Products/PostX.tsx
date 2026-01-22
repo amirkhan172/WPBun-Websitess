@@ -328,7 +328,7 @@ export default function PostX() {
             </section>
 
             {/* Dynamic Site Builder */}
-            <section className="py-20 bg-gradient-to-br from-[#070707] to-[#1a1a2e] text-white">
+            <section className="py-20 bg-[#f8fafc]">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -336,10 +336,10 @@ export default function PostX() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Dynamic Site Builder
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-gray-600 max-w-2xl mx-auto">
                             Build and customize every page template on your site
                         </p>
                     </motion.div>
@@ -352,15 +352,15 @@ export default function PostX() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-white/5 backdrop-blur border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors"
+                                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-all"
                             >
                                 <div className="flex items-center gap-4">
                                     <div className="w-12 h-12 bg-[#1f66ff] rounded-lg flex items-center justify-center">
                                         <FileText className="w-6 h-6 text-white" />
                                     </div>
                                     <div>
-                                        <h3 className="font-bold text-white mb-1">{page.name}</h3>
-                                        <p className="text-sm text-gray-400">{page.description}</p>
+                                        <h3 className="font-bold text-[#070707] mb-1">{page.name}</h3>
+                                        <p className="text-sm text-gray-600">{page.description}</p>
                                     </div>
                                 </div>
                             </motion.div>
@@ -543,7 +543,7 @@ export default function PostX() {
             </section>
 
             {/* Agency Bundle CTA */}
-            <section className="py-16 bg-gradient-to-r from-[#1f66ff] to-[#7c3aed]">
+            <section className="py-16 bg-[#0242cc]">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -551,10 +551,10 @@ export default function PostX() {
                         viewport={{ once: true }}
                         className="text-center text-white"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6">
                             Want All Plugins? Get the Agency Bundle
                         </h2>
-                        <p className="text-white/80 mb-6 max-w-2xl mx-auto">
+                        <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
                             Get PostX + 9 more premium plugins for unlimited sites at $749 (Save $800+)
                         </p>
                         <Link

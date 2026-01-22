@@ -306,7 +306,7 @@ export default function About() {
             </section>
 
             {/* Timeline Section */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-blue-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -314,13 +314,13 @@ export default function About() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <span className="inline-block px-4 py-2 bg-[#cdf33b]/20 text-[#cdf33b] rounded-full text-sm font-semibold mb-6">
+                        <span className="inline-block px-4 py-2 bg-[#1f66ff]/10 text-[#1f66ff] rounded-full text-sm font-semibold mb-6">
                             OUR JOURNEY
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Milestones & Achievements
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
                             A look at our journey from a small startup to a trusted WordPress solution provider.
                         </p>
                     </motion.div>
@@ -333,11 +333,11 @@ export default function About() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.1 }}
-                                className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
+                                className="bg-white rounded-2xl p-6 border border-blue-100 shadow-sm hover:shadow-md transition-shadow"
                             >
-                                <div className="text-[#cdf33b] font-bold text-lg mb-2">{milestone.year}</div>
-                                <h3 className="text-white font-bold text-xl mb-2">{milestone.title}</h3>
-                                <p className="text-gray-400 text-sm">{milestone.description}</p>
+                                <div className="text-[#1f66ff] font-bold text-lg mb-2">{milestone.year}</div>
+                                <h3 className="text-[#070707] font-bold text-xl mb-2">{milestone.title}</h3>
+                                <p className="text-gray-600 text-sm">{milestone.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -345,7 +345,7 @@ export default function About() {
             </section>
 
             {/* Community Section */}
-            <section className="py-20 bg-gradient-to-br from-[#1f66ff] to-blue-700 text-white">
+            <section className="py-20 bg-gray-200">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -353,10 +353,10 @@ export default function About() {
                         viewport={{ once: true }}
                         className="text-center mb-12"
                     >
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Community Involvement
                         </h2>
-                        <p className="text-white/80 max-w-2xl mx-auto text-lg">
+                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
                             We're proud to give back to the WordPress community that has given us so much.
                         </p>
                     </motion.div>
@@ -366,39 +366,39 @@ export default function About() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center"
+                            className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                         >
-                            <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <div className="w-16 h-16 bg-[#1f66ff]/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-[#1f66ff]">
                                 <Globe className="w-8 h-8" />
                             </div>
-                            <div className="text-4xl font-bold mb-2">12+</div>
-                            <div className="text-white/80">Sponsored WordCamps</div>
+                            <div className="text-4xl font-bold text-[#070707] mb-2">12+</div>
+                            <div className="text-gray-600">Sponsored WordCamps</div>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center"
+                            className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                         >
-                            <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <div className="w-16 h-16 bg-[#1f66ff]/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-[#1f66ff]">
                                 <Code className="w-8 h-8" />
                             </div>
-                            <div className="text-4xl font-bold mb-2">20+</div>
-                            <div className="text-white/80">Open-source Contributors</div>
+                            <div className="text-4xl font-bold text-[#070707] mb-2">20+</div>
+                            <div className="text-gray-600">Open-source Contributors</div>
                         </motion.div>
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center"
+                            className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
                         >
-                            <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                            <div className="w-16 h-16 bg-[#1f66ff]/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-[#1f66ff]">
                                 <Heart className="w-8 h-8" />
                             </div>
-                            <div className="text-4xl font-bold mb-2">100+</div>
-                            <div className="text-white/80">Countries Reached</div>
+                            <div className="text-4xl font-bold text-[#070707] mb-2">100+</div>
+                            <div className="text-gray-600">Countries Reached</div>
                         </motion.div>
                     </div>
                 </div>
@@ -447,32 +447,32 @@ export default function About() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 bg-[#f5f7f9]">
+            <section className="py-20 bg-white">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-[#070707] rounded-3xl p-12 text-center"
+                        className="bg-blue-100 rounded-3xl p-12 text-center border border-blue-200"
                     >
-                        <Zap className="w-12 h-12 mx-auto mb-6 text-[#cdf33b]" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <Zap className="w-12 h-12 mx-auto mb-6 text-[#1f66ff]" />
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Ready to Get Started?
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Join 65,000+ happy users and take your WordPress website to the next level with our powerful plugins.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/products"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#1a56db] transition-colors"
                             >
                                 Explore Products
                                 <ChevronRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/agency-bundle"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold border border-gray-200 hover:border-[#1f66ff] hover:text-[#1f66ff] transition-colors"
                             >
                                 View Agency Bundle
                             </Link>

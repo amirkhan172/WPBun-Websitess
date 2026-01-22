@@ -19,7 +19,7 @@ export default function AppLayout({ children }: PropsWithChildren) {
     }, []);
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white overflow-x-hidden">
             <Navbar />
             <main>{children}</main>
             <Footer />

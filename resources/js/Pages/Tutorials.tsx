@@ -148,6 +148,72 @@ const tutorials = [
         featured: false,
         level: 'Intermediate',
     },
+    {
+        id: 13,
+        title: 'PostX Query Builder Masterclass',
+        description: 'Deep dive into the query builder to create complex dynamic content displays.',
+        category: 'postx',
+        duration: '26:15',
+        views: '5.2K',
+        thumbnail: 'PostX',
+        featured: false,
+        level: 'Advanced',
+    },
+    {
+        id: 14,
+        title: 'WowStore Cart & Checkout Optimization',
+        description: 'Optimize your WooCommerce cart and checkout pages for maximum conversions.',
+        category: 'wowstore',
+        duration: '21:30',
+        views: '4.5K',
+        thumbnail: 'WowStore',
+        featured: false,
+        level: 'Intermediate',
+    },
+    {
+        id: 15,
+        title: 'WowRevenue Analytics Dashboard',
+        description: 'Learn to use the analytics dashboard to track your bundle and discount performance.',
+        category: 'wowrevenue',
+        duration: '12:45',
+        views: '3.1K',
+        thumbnail: 'WowRevenue',
+        featured: false,
+        level: 'Beginner',
+    },
+    {
+        id: 16,
+        title: 'WowAddons Conditional Logic Advanced',
+        description: 'Create complex conditional logic rules for dynamic product addon displays.',
+        category: 'wowaddons',
+        duration: '23:20',
+        views: '2.8K',
+        thumbnail: 'WowAddons',
+        featured: false,
+        level: 'Advanced',
+    },
+    {
+        id: 17,
+        title: 'WowOptin A/B Testing Strategies',
+        description: 'Learn effective A/B testing strategies to optimize your popup conversions.',
+        category: 'wowoptin',
+        duration: '18:10',
+        views: '3.5K',
+        thumbnail: 'WowOptin',
+        featured: false,
+        level: 'Intermediate',
+    },
+    {
+        id: 18,
+        title: 'WowShipping Free Shipping Rules',
+        description: 'Set up smart free shipping rules to increase average order value.',
+        category: 'wowshipping',
+        duration: '14:55',
+        views: '2.4K',
+        thumbnail: 'WowShipping',
+        featured: false,
+        level: 'Beginner',
+    },
 ];
 
 const colorMap: Record<string, string> = {
@@ -166,9 +232,21 @@ const levelColors: Record<string, string> = {
     Advanced: 'bg-[#ff176b]/10 text-[#ff176b]',
 };
 
+const badgeColorMap: Record<string, string> = {
+    PostX: 'bg-blue-100 text-blue-700',
+    WowStore: 'bg-cyan-100 text-cyan-700',
+    WowRevenue: 'bg-pink-100 text-pink-700',
+    WowAddons: 'bg-green-100 text-green-700',
+    WholesaleX: 'bg-violet-100 text-violet-700',
+    WowOptin: 'bg-amber-100 text-amber-700',
+    WowShipping: 'bg-orange-100 text-orange-700',
+};
+
 export default function Tutorials() {
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
+    const [visibleTutorials, setVisibleTutorials] = useState(6);
+    const tutorialsPerLoad = 3;
 
     const filteredTutorials = tutorials.filter((tutorial) => {
         const matchesCategory = activeCategory === 'all' || tutorial.category === activeCategory;
@@ -178,7 +256,23 @@ export default function Tutorials() {
     });
 
     const featuredTutorials = filteredTutorials.filter(t => t.featured);
-    const regularTutorials = filteredTutorials.filter(t => !t.featured);
+    const allRegularTutorials = filteredTutorials.filter(t => !t.featured);
+    const regularTutorials = allRegularTutorials.slice(0, visibleTutorials);
+    const hasMoreTutorials = visibleTutorials < allRegularTutorials.length;
+
+    const handleLoadMore = () => {
+        setVisibleTutorials((prev) => prev + tutorialsPerLoad);
+    };
+
+    const handleCategoryChange = (categoryId: string) => {
+        setActiveCategory(categoryId);
+        setVisibleTutorials(6);
+    };
+
+    const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+        setVisibleTutorials(6);
+    };
 
     return (
         <AppLayout>
@@ -232,7 +326,7 @@ export default function Tutorials() {
                                 type="text"
                                 placeholder="Search tutorials..."
                                 value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
+                                onChange={handleSearchChange}
                                 className="w-full pl-14 pr-6 py-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-[#1f66ff] focus:border-[#1f66ff] transition-colors shadow-lg text-lg"
                             />
                         </motion.div>
@@ -241,16 +335,16 @@ export default function Tutorials() {
             </section>
 
             {/* Categories Filter */}
-            <section className="py-6 bg-white border-b border-gray-100 sticky top-20 z-40">
-                <div className="container-custom">
-                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <section className="py-6 bg-white border-b border-gray-100">
+                <div className="container-custom overflow-hidden">
+                    <div className="flex gap-3 justify-start pb-2">
                         {categories.map((category) => (
                             <button
                                 key={category.id}
-                                onClick={() => setActiveCategory(category.id)}
-                                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
+                                onClick={() => handleCategoryChange(category.id)}
+                                className={`flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all ${
                                     activeCategory === category.id
-                                        ? 'bg-[#070707] text-white'
+                                        ? 'bg-blue-200 text-[#1f66ff]'
                                         : 'bg-[#f5f7f9] text-gray-600 hover:bg-gray-200'
                                 }`}
                             >
@@ -288,18 +382,18 @@ export default function Tutorials() {
                                     transition={{ delay: index * 0.1 }}
                                     className="group cursor-pointer"
                                 >
-                                    <div className={`relative bg-gradient-to-br ${colorMap[tutorial.thumbnail]} rounded-2xl aspect-video mb-5 overflow-hidden`}>
+                                    <div className="relative bg-blue-100 rounded-2xl aspect-video mb-5 overflow-hidden">
                                         <div className="absolute inset-0 flex items-center justify-center">
-                                            <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                                                <Play className="w-10 h-10 text-white fill-white ml-1" />
+                                            <div className="w-20 h-20 bg-[#1f66ff]/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                                <Play className="w-10 h-10 text-[#1f66ff] fill-[#1f66ff] ml-1" />
                                             </div>
                                         </div>
                                         <div className="absolute top-4 left-4">
-                                            <span className={`px-3 py-1 ${levelColors[tutorial.level]} text-xs font-bold rounded-full`}>
+                                            <span className={`px-3 py-1 ${badgeColorMap[tutorial.thumbnail]} text-xs font-bold rounded-full`}>
                                                 {tutorial.level}
                                             </span>
                                         </div>
-                                        <div className="absolute bottom-4 right-4 px-3 py-1 bg-black/60 text-white text-sm rounded-lg flex items-center gap-1">
+                                        <div className="absolute bottom-4 right-4 px-3 py-1 bg-[#1f66ff] text-white text-sm rounded-lg flex items-center gap-1">
                                             <Clock className="w-4 h-4" />
                                             {tutorial.duration}
                                         </div>
@@ -353,7 +447,7 @@ export default function Tutorials() {
                                             </div>
                                         </div>
                                         <div className="absolute top-3 left-3">
-                                            <span className={`px-2.5 py-1 ${levelColors[tutorial.level]} text-xs font-bold rounded-full`}>
+                                            <span className={`px-2.5 py-1 ${badgeColorMap[tutorial.thumbnail]} text-xs font-bold rounded-full`}>
                                                 {tutorial.level}
                                             </span>
                                         </div>
@@ -384,9 +478,12 @@ export default function Tutorials() {
                     )}
 
                     {/* Load More */}
-                    {regularTutorials.length > 0 && (
+                    {hasMoreTutorials && (
                         <div className="text-center mt-12">
-                            <button className="inline-flex items-center gap-2 bg-[#070707] text-white px-8 py-4 rounded-lg font-bold hover:bg-gray-800 transition-colors">
+                            <button
+                                onClick={handleLoadMore}
+                                className="inline-flex items-center gap-2 bg-blue-200 text-blue-700 px-8 py-4 rounded-lg font-bold hover:bg-blue-300 transition-colors"
+                            >
                                 Load More Tutorials
                                 <ChevronRight className="w-5 h-5" />
                             </button>
@@ -396,7 +493,7 @@ export default function Tutorials() {
             </section>
 
             {/* YouTube CTA */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-red-50">
                 <div className="container-custom text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -406,17 +503,15 @@ export default function Tutorials() {
                         <div className="w-20 h-20 bg-red-600 rounded-2xl flex items-center justify-center mx-auto mb-8">
                             <Youtube className="w-10 h-10 text-white" />
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Subscribe to Our YouTube Channel
                         </h2>
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Get notified when we release new tutorials. Join 10,000+ subscribers learning WordPress & WooCommerce the right way.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <a
                                 href="#"
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="inline-flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition-colors"
                             >
                                 <Youtube className="w-5 h-5" />
@@ -424,9 +519,7 @@ export default function Tutorials() {
                             </a>
                             <a
                                 href="#"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold border border-gray-200 hover:border-red-500 hover:text-red-600 transition-colors"
                             >
                                 Watch on YouTube
                             </a>

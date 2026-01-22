@@ -325,8 +325,8 @@ export default function WowAddons() {
                 </div>
             </section>
 
-            {/* Use Cases - Dark Section */}
-            <section className="py-20 bg-gradient-to-br from-[#070707] to-gray-900 text-white">
+            {/* Use Cases */}
+            <section className="py-20 bg-[#f0fdf4]">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -334,13 +334,13 @@ export default function WowAddons() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <span className="inline-block px-4 py-2 bg-white/10 text-green-400 rounded-full text-sm font-semibold mb-4">
+                        <span className="inline-block px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-semibold mb-4">
                             USE CASES
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        <h2 className="text-3xl md:text-4xl font-bold text-[#070707] mb-4">
                             Perfect For Any Custom Product
                         </h2>
-                        <p className="text-gray-400 max-w-2xl mx-auto">
+                        <p className="text-gray-600 max-w-2xl mx-auto">
                             Join 10,000+ stores using WowAddons for custom products
                         </p>
                     </motion.div>
@@ -353,10 +353,10 @@ export default function WowAddons() {
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.05 }}
-                                className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 flex items-center gap-3"
+                                className="bg-white border border-gray-200 rounded-xl p-4 flex items-center gap-3"
                             >
-                                <Check className="w-5 h-5 text-green-400 flex-shrink-0" />
-                                <span className="text-sm font-medium">{useCase}</span>
+                                <Check className="w-5 h-5 text-green-500 flex-shrink-0" />
+                                <span className="text-sm font-medium text-[#070707]">{useCase}</span>
                             </motion.div>
                         ))}
                     </div>
@@ -506,22 +506,22 @@ export default function WowAddons() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="mt-16 bg-gradient-to-r from-[#070707] to-gray-800 rounded-2xl p-8 md:p-12 text-center text-white"
+                        className="mt-16 bg-[#f0fdf4] border-[3px] border-gray-300 rounded-2xl p-8 md:p-12 text-center"
                     >
                         <div className="flex items-center justify-center gap-2 mb-4">
-                            <Zap className="w-6 h-6 text-[#cdf33b]" />
-                            <span className="text-[#cdf33b] font-semibold">BEST VALUE</span>
+                            <Zap className="w-6 h-6 text-green-600" />
+                            <span className="text-green-600 font-semibold">BEST VALUE</span>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h3 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             Get WowAddons + 9 More Plugins
                         </h3>
-                        <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+                        <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                             Save over 80% with our Agency Bundle. Get all 10 premium plugins for unlimited sites at one incredible price.
                         </p>
                         <div className="flex items-center justify-center gap-4 mb-6">
-                            <span className="text-4xl font-bold">$749</span>
-                            <span className="text-gray-400 line-through">$3,500+</span>
-                            <span className="bg-[#cdf33b] text-[#070707] px-3 py-1 rounded-full text-sm font-bold">
+                            <span className="text-4xl font-bold text-[#070707]">$749</span>
+                            <span className="text-gray-500 line-through">$3,500+</span>
+                            <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">
                                 LIFETIME
                             </span>
                         </div>
@@ -585,25 +585,25 @@ export default function WowAddons() {
             {/* Final CTA */}
             <section className="py-16 bg-[#f5f7f9]">
                 <div className="container-custom">
-                    <div className="bg-gradient-to-br from-green-400 to-emerald-600 rounded-2xl p-8 md:p-12 text-center text-white">
-                        <Shield className="w-16 h-16 mx-auto mb-6" />
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                    <div className="bg-[#f0fdf4] border-2 border-gray-400 rounded-2xl p-8 md:p-12 text-center">
+                        <Shield className="w-16 h-16 mx-auto mb-6 text-green-600" />
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             14-Day Money-Back Guarantee
                         </h2>
-                        <p className="text-green-100 max-w-2xl mx-auto mb-8">
+                        <p className="text-gray-600 max-w-2xl mx-auto mb-8">
                             Try WowAddons risk-free. If it doesn't meet your needs within 14 days, we'll refund your purchase - no questions asked.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/pricing"
-                                className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors inline-flex items-center justify-center gap-2"
+                                className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors inline-flex items-center justify-center gap-2"
                             >
                                 Get WowAddons Pro
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/documentation"
-                                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-colors"
+                                className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-green-50 transition-colors"
                             >
                                 View Documentation
                             </Link>

@@ -301,11 +301,11 @@ export default function Contact() {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full bg-[#ff176b] text-white px-8 py-4 rounded-xl font-bold hover:bg-[#e01560] transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                        className="w-full bg-blue-100 text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-200 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                                     >
                                         {isSubmitting ? (
                                             <>
-                                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                                <div className="w-5 h-5 border-2 border-blue-300 border-t-blue-600 rounded-full animate-spin"></div>
                                                 Sending...
                                             </>
                                         ) : (
@@ -328,17 +328,17 @@ export default function Contact() {
                             className="lg:col-span-2 space-y-6"
                         >
                             {/* Custom Work Section */}
-                            <div className="bg-[#070707] rounded-2xl p-8 text-white">
-                                <h3 className="text-xl font-bold mb-4">Looking for Custom Work?</h3>
-                                <p className="text-gray-300 mb-6">
+                            <div className="bg-blue-50 rounded-2xl p-8 border border-blue-100">
+                                <h3 className="text-xl font-bold mb-4 text-[#070707]">Looking for Custom Work?</h3>
+                                <p className="text-gray-600 mb-6">
                                     We build custom WordPress and WooCommerce solutions designed to help your business grow. Our team of 30+ professionals is ready to help.
                                 </p>
                                 <div className="space-y-4">
                                     <a
                                         href="tel:+8801710437638"
-                                        className="flex items-center gap-3 text-white hover:text-[#cdf33b] transition-colors"
+                                        className="flex items-center gap-3 text-[#070707] hover:text-[#1f66ff] transition-colors"
                                     >
-                                        <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                                        <div className="w-10 h-10 bg-[#1f66ff]/10 rounded-lg flex items-center justify-center text-[#1f66ff]">
                                             <Phone className="w-5 h-5" />
                                         </div>
                                         <span>+880 1710-437638</span>
@@ -347,9 +347,9 @@ export default function Contact() {
                                         href="https://wa.me/8801710437638"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 text-white hover:text-[#cdf33b] transition-colors"
+                                        className="flex items-center gap-3 text-[#070707] hover:text-[#1f66ff] transition-colors"
                                     >
-                                        <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                                        <div className="w-10 h-10 bg-[#1f66ff]/10 rounded-lg flex items-center justify-center text-[#1f66ff]">
                                             <MessageCircle className="w-5 h-5" />
                                         </div>
                                         <span>WhatsApp Us</span>
@@ -357,9 +357,9 @@ export default function Contact() {
                                     </a>
                                     <a
                                         href="mailto:business@wpbun.com"
-                                        className="flex items-center gap-3 text-white hover:text-[#cdf33b] transition-colors"
+                                        className="flex items-center gap-3 text-[#070707] hover:text-[#1f66ff] transition-colors"
                                     >
-                                        <div className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                                        <div className="w-10 h-10 bg-[#1f66ff]/10 rounded-lg flex items-center justify-center text-[#1f66ff]">
                                             <Mail className="w-5 h-5" />
                                         </div>
                                         <span>business@wpbun.com</span>

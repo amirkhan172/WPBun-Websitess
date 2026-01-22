@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, User, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags } from 'lucide-react';
 
@@ -115,6 +115,20 @@ export default function Navbar() {
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const { url } = usePage();
+
+    // Check if a link is active
+    const isActive = (href: string) => {
+        if (href === '/') return url === '/';
+        return url.startsWith(href);
+    };
+
+    // Check if any product link is active (for Products dropdown) - excluding Agency Bundle
+    const isProductsActive = () => {
+        return productsData.some(product =>
+            product.href !== '/agency-bundle' && url.startsWith(product.href)
+        );
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -146,7 +160,7 @@ export default function Navbar() {
             <div className="container-custom">
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-2 -ml-[6.5rem]">
+                    <Link href="/" className="flex items-center gap-2 -ml-[3rem]">
                         <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                             <span className="text-white font-bold text-xl">W</span>
                         </div>
@@ -167,14 +181,18 @@ export default function Navbar() {
                                 {isInternalLink && !item.children && !item.isProductsDropdown ? (
                                     <Link
                                         href={item.href}
-                                        className="flex items-center gap-1 px-4 py-2 text-secondary font-medium hover:text-primary transition-colors"
+                                        className={`flex items-center gap-1 px-4 py-2 font-medium transition-colors ${
+                                            isActive(item.href) ? 'text-primary' : 'text-secondary hover:text-primary'
+                                        }`}
                                     >
                                         {item.label}
                                     </Link>
                                 ) : (
                                     <a
                                         href={item.href}
-                                        className="flex items-center gap-1 px-4 py-2 text-secondary font-medium hover:text-primary transition-colors"
+                                        className={`flex items-center gap-1 px-4 py-2 font-medium transition-colors ${
+                                            item.isProductsDropdown && isProductsActive() ? 'text-primary' : 'text-secondary hover:text-primary'
+                                        }`}
                                     >
                                         {item.label}
                                         {(item.children || item.isProductsDropdown) && (
@@ -199,14 +217,18 @@ export default function Navbar() {
                                                         <Link
                                                             key={product.label}
                                                             href={product.href}
-                                                            className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-all duration-200 group"
+                                                            className={`flex items-start gap-3 p-4 rounded-lg transition-all duration-200 group ${
+                                                                isActive(product.href) ? 'bg-primary/10' : 'hover:bg-gray-50'
+                                                            }`}
                                                         >
                                                             <div className={`w-11 h-11 rounded-lg ${product.iconBg} flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-110 transition-transform duration-200`}>
                                                                 {product.icon}
                                                             </div>
                                                             <div className="flex-1 min-w-0">
                                                                 <div className="flex items-center gap-2 flex-wrap">
-                                                                    <span className="font-semibold text-secondary group-hover:text-primary transition-colors text-[15px]">
+                                                                    <span className={`font-semibold transition-colors text-[15px] ${
+                                                                        isActive(product.href) ? 'text-primary' : 'text-secondary group-hover:text-primary'
+                                                                    }`}>
                                                                         {product.label}
                                                                     </span>
                                                                     {product.badge === 'new' && (
@@ -262,7 +284,7 @@ export default function Navbar() {
                     </div>
 
                     {/* CTA Button */}
-                    <div className="hidden lg:flex items-center -mr-[6.5rem]">
+                    <div className="hidden lg:flex items-center -mr-[3rem]">
                         <Link
                             href="/login"
                             className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-secondary font-medium hover:bg-gray-200 transition-colors"
@@ -296,7 +318,9 @@ export default function Navbar() {
                                         {hasDropdown ? (
                                             <button
                                                 onClick={() => setActiveDropdown(activeDropdown === item.label ? null : item.label)}
-                                                className="flex items-center justify-between w-full px-4 py-2 text-secondary font-medium hover:text-primary transition-colors"
+                                                className={`flex items-center justify-between w-full px-4 py-2 font-medium transition-colors ${
+                                                    item.isProductsDropdown && isProductsActive() ? 'text-primary' : 'text-secondary hover:text-primary'
+                                                }`}
                                             >
                                                 {item.label}
                                                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === item.label ? 'rotate-180' : ''}`} />
@@ -304,7 +328,9 @@ export default function Navbar() {
                                         ) : isInternalLink ? (
                                             <Link
                                                 href={item.href}
-                                                className="block px-4 py-2 text-secondary font-medium hover:text-primary transition-colors"
+                                                className={`block px-4 py-2 font-medium transition-colors ${
+                                                    isActive(item.href) ? 'text-primary' : 'text-secondary hover:text-primary'
+                                                }`}
                                                 onClick={() => setIsOpen(false)}
                                             >
                                                 {item.label}
@@ -331,14 +357,18 @@ export default function Navbar() {
                                                         key={product.label}
                                                         href={product.href}
                                                         onClick={() => setIsOpen(false)}
-                                                        className="flex items-center gap-3 px-4 py-3 hover:bg-gray-100 transition-colors"
+                                                        className={`flex items-center gap-3 px-4 py-3 transition-colors ${
+                                                            isActive(product.href) ? 'bg-primary/10' : 'hover:bg-gray-100'
+                                                        }`}
                                                     >
                                                         <div className={`w-8 h-8 rounded-lg ${product.iconBg} flex items-center justify-center flex-shrink-0`}>
                                                             {product.icon}
                                                         </div>
                                                         <div className="flex-1">
                                                             <div className="flex items-center gap-2">
-                                                                <span className="font-medium text-secondary text-sm">
+                                                                <span className={`font-medium text-sm ${
+                                                                    isActive(product.href) ? 'text-primary' : 'text-secondary'
+                                                                }`}>
                                                                     {product.label}
                                                                 </span>
                                                                 {product.badge === 'new' && (

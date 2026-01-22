@@ -320,7 +320,7 @@ export default function Products() {
             </section>
 
             {/* Agency Bundle CTA */}
-            <section className="py-20 bg-[#070707]">
+            <section className="py-20 bg-blue-50">
                 <div className="container-custom">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -328,16 +328,16 @@ export default function Products() {
                         viewport={{ once: true }}
                         className="text-center max-w-4xl mx-auto"
                     >
-                        <div className="inline-flex items-center gap-2 bg-[#cdf33b]/20 text-[#cdf33b] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                        <div className="inline-flex items-center gap-2 bg-[#1f66ff]/10 text-[#1f66ff] px-4 py-2 rounded-full text-sm font-semibold mb-6">
                             <Zap className="w-5 h-5" />
                             SAVE OVER 80%
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#070707] mb-6">
                             Get All 8 Plugins in One Bundle
                         </h2>
 
-                        <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
                             Why buy separately? Get lifetime access to all our premium plugins with the Agency Bundle. One payment, unlimited possibilities.
                         </p>
 
@@ -361,9 +361,9 @@ export default function Products() {
                                 { label: 'Unlimited Sites', value: 'Forever' },
                                 { label: 'Lifetime Updates', value: 'Included' },
                             ].map((item) => (
-                                <div key={item.label} className="bg-white/5 rounded-xl p-4">
-                                    <p className="text-[#cdf33b] font-bold text-lg">{item.value}</p>
-                                    <p className="text-gray-400 text-sm">{item.label}</p>
+                                <div key={item.label} className="bg-white rounded-xl p-4 border border-blue-100">
+                                    <p className="text-[#1f66ff] font-bold text-lg">{item.value}</p>
+                                    <p className="text-gray-500 text-sm">{item.label}</p>
                                 </div>
                             ))}
                         </div>
@@ -371,7 +371,7 @@ export default function Products() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/agency-bundle"
-                                className="inline-flex items-center justify-center gap-2 bg-[#cdf33b] text-[#070707] px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#d8f655] transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#1a56db] transition-colors"
                             >
                                 <Package className="w-5 h-5" />
                                 View Agency Bundle
@@ -379,7 +379,7 @@ export default function Products() {
                             </Link>
                             <Link
                                 href="/pricing"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold text-lg border border-gray-200 hover:border-[#1f66ff] hover:text-[#1f66ff] transition-colors"
                             >
                                 Compare Pricing
                             </Link>
@@ -436,25 +436,25 @@ export default function Products() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="bg-gradient-to-r from-[#1f66ff] to-blue-700 rounded-2xl p-8 md:p-12 text-center text-white"
+                        className="bg-blue-100 rounded-2xl p-8 md:p-12 text-center border border-blue-200"
                     >
-                        <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                        <h2 className="text-2xl md:text-3xl font-bold text-[#070707] mb-4">
                             Ready to Power Up Your Website?
                         </h2>
-                        <p className="text-blue-100 mb-8 max-w-xl mx-auto">
+                        <p className="text-gray-600 mb-8 max-w-xl mx-auto">
                             Join 65,000+ websites already using WPBun plugins. Start your journey today with our 14-day money-back guarantee.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Link
                                 href="/agency-bundle"
-                                className="inline-flex items-center justify-center gap-2 bg-white text-[#1f66ff] px-8 py-4 rounded-lg font-bold hover:bg-gray-100 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-[#1f66ff] text-white px-8 py-4 rounded-lg font-bold hover:bg-[#1a56db] transition-colors"
                             >
                                 Get Agency Bundle
                                 <ArrowRight className="w-5 h-5" />
                             </Link>
                             <Link
                                 href="/contact"
-                                className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-8 py-4 rounded-lg font-bold hover:bg-white/20 transition-colors"
+                                className="inline-flex items-center justify-center gap-2 bg-white text-[#070707] px-8 py-4 rounded-lg font-bold border border-gray-200 hover:border-[#1f66ff] hover:text-[#1f66ff] transition-colors"
                             >
                                 Contact Sales
                             </Link>
