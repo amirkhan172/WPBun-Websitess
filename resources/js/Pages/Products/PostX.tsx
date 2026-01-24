@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -138,7 +138,7 @@ export default function PostX() {
     const filteredPricing = pricingPlans.filter(plan => plan.type === pricingType);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="PostX - WordPress Post Grid Plugin & Gutenberg Blocks | WPBun" />
 
             {/* Hero Section */}
@@ -643,6 +643,6 @@ export default function PostX() {
                     </div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { DollarSign, Percent, Cookie, CreditCard, Users, TrendingUp, BarChart3, CheckCircle, XCircle, ChevronRight, ChevronDown, Star, Zap, Gift, Globe, Mail, ArrowRight, Sparkles } from 'lucide-react';
@@ -131,7 +131,7 @@ export default function Affiliates() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Affiliate Program - Earn 25% Commission | WPBun" />
 
             {/* Hero Section */}
@@ -488,6 +488,6 @@ export default function Affiliates() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

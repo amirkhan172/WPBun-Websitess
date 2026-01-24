@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import Hero from '@/Components/Hero';
 import Products from '@/Components/Products';
 import Features from '@/Components/Features';
@@ -8,13 +8,13 @@ import Stats from '@/Components/Stats';
 
 export default function Home() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Powerful WordPress & WooCommerce Solutions" />
             <Hero />
             <Products />
             <Features />
             <Testimonials />
             <Stats />
-        </AppLayout>
+        </DynamicLayout>
     );
 }

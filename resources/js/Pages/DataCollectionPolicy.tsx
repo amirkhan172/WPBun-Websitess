@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { Database, Eye, Shield, Lock, Server, Cookie, UserCheck, Settings, Mail, ChevronRight, AlertCircle, Globe, Smartphone } from 'lucide-react';
 
@@ -277,7 +277,7 @@ Contact us at privacy@wpbun.com with any questions about this policy.`
 
 export default function DataCollectionPolicy() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Data Collection Policy | WPBun" />
 
             {/* Hero Section */}
@@ -612,6 +612,6 @@ export default function DataCollectionPolicy() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

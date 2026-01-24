@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -135,7 +135,7 @@ export default function WowOptin() {
     const currentPlans = isYearly ? yearlyPlans : lifetimePlans;
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="WowOptin - Popups & Lead Generation for WordPress | WPBun" />
 
             {/* Hero Section */}
@@ -608,6 +608,6 @@ export default function WowOptin() {
                     </div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

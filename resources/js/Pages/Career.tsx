@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { Briefcase, MapPin, Clock, Users, Calendar, ChevronRight, Heart, Zap, Coffee, Globe, Award, Code, Sparkles, ArrowRight, Building, DollarSign } from 'lucide-react';
 
@@ -144,7 +144,7 @@ const timeline = [
 
 export default function Career() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Careers - Join Our Team | WPBun" />
 
             {/* Hero Section */}
@@ -494,6 +494,6 @@ export default function Career() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

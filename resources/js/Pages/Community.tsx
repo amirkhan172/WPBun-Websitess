@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Users, MessageCircle, Heart, Star, Globe, Github, Facebook, Youtube, HelpCircle, BookOpen, Zap, ChevronRight, ExternalLink, ChevronDown, Plus, Minus } from 'lucide-react';
@@ -106,7 +106,7 @@ export default function Community() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Community - Join 25K+ WordPress Users | WPBun" />
 
             {/* Hero Section */}
@@ -364,6 +364,6 @@ export default function Community() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

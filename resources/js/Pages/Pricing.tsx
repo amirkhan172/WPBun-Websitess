@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -118,7 +118,7 @@ export default function Pricing() {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Pricing - Premium WordPress Plugins | WPBun" />
 
             {/* Hero Section */}
@@ -550,6 +550,6 @@ export default function Pricing() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

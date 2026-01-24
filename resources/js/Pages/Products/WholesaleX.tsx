@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -135,7 +135,7 @@ export default function WholesaleX() {
     const currentPlans = isYearly ? yearlyPlans : lifetimePlans;
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="WholesaleX - B2B & Wholesale Solution for WooCommerce | WPBun" />
 
             {/* Hero Section */}
@@ -608,6 +608,6 @@ export default function WholesaleX() {
                     </div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { ShoppingCart, HelpCircle, ChevronDown, CheckCircle, Package, CreditCard, RefreshCw, Shield, Zap, Users, Award, Mail, MessageCircle, Phone, ChevronRight, ArrowRight, Sparkles, Star } from 'lucide-react';
@@ -108,7 +108,7 @@ export default function PreSales() {
     const [openFaq, setOpenFaq] = useState<number | null>(0);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Pre-Sales Questions | WPBun" />
 
             {/* Hero Section */}
@@ -491,6 +491,6 @@ export default function PreSales() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

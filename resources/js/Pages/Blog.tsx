@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Calendar, Clock, User, ChevronRight, Search, Mail, Star, ArrowRight, Rss } from 'lucide-react';
@@ -191,7 +191,7 @@ export default function Blog() {
     };
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Blog - WordPress & WooCommerce Tips | WPBun" />
 
             {/* Hero Section */}
@@ -443,6 +443,6 @@ export default function Blog() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

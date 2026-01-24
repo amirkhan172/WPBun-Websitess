@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -167,7 +167,7 @@ export default function WowStore() {
     const currentPlans = isYearly ? yearlyPlans : lifetimePlans;
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="WowStore - Complete WooCommerce Store Builder | WPBun" />
 
             {/* Hero Section */}
@@ -679,6 +679,6 @@ export default function WowStore() {
                     </div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

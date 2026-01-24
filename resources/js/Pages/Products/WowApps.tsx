@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import {
@@ -133,7 +133,7 @@ export default function WowApps() {
     const filteredPricing = pricingPlans.filter(plan => plan.type === pricingType);
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="WowApps - Turn WordPress into Mobile Apps | WPBun" />
 
             {/* Hero Section */}
@@ -654,6 +654,6 @@ export default function WowApps() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

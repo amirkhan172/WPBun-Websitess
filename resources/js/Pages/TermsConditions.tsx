@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { FileText, Scale, AlertCircle, CheckCircle, Mail, ChevronRight } from 'lucide-react';
 
@@ -248,7 +248,7 @@ const keyPoints = [
 
 export default function TermsConditions() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Terms & Conditions | WPBun" />
 
             {/* Hero Section */}
@@ -458,6 +458,6 @@ export default function TermsConditions() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

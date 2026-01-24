@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Play, Clock, Eye, Search, LayoutGrid, Store, DollarSign, PlusCircle, Tags, MousePointerClick, Truck, BookOpen, ChevronRight, Youtube, Star, Users } from 'lucide-react';
@@ -275,7 +275,7 @@ export default function Tutorials() {
     };
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Video Tutorials - Learn WordPress & WooCommerce | WPBun" />
 
             {/* Hero Section */}
@@ -583,6 +583,6 @@ export default function Tutorials() {
                     </div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

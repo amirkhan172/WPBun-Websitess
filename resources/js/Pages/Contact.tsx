@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Mail, Phone, MessageCircle, Users, FileText, Upload, Send, ExternalLink, Headphones, Clock, Star, ChevronRight, BookOpen, Youtube } from 'lucide-react';
@@ -92,7 +92,7 @@ export default function Contact() {
     };
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Contact Us - Get Help & Support | WPBun" />
 
             {/* Hero Section */}
@@ -454,6 +454,6 @@ export default function Contact() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

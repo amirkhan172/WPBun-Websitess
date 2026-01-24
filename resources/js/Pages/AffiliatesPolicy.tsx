@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { Handshake, Percent, Calendar, Clock, CreditCard, Shield, AlertTriangle, CheckCircle, XCircle, Mail, ChevronRight, DollarSign, Cookie } from 'lucide-react';
 
@@ -251,7 +251,7 @@ Join our affiliate program today and start earning!`
 
 export default function AffiliatesPolicy() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Affiliate Program Policy | WPBun" />
 
             {/* Hero Section */}
@@ -479,6 +479,6 @@ export default function AffiliatesPolicy() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { RefreshCcw, CheckCircle, XCircle, Clock, Mail, ChevronRight, AlertCircle, HelpCircle, CreditCard } from 'lucide-react';
 
@@ -99,7 +99,7 @@ const faqs = [
 
 export default function RefundPolicy() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Refund Policy | WPBun" />
 
             {/* Hero Section */}
@@ -374,6 +374,6 @@ export default function RefundPolicy() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

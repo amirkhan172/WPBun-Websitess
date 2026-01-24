@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { HelpCircle, ChevronDown, Search, MessageCircle, BookOpen, CreditCard, Settings, Package, LifeBuoy, Mail, ChevronRight, Zap } from 'lucide-react';
@@ -146,7 +146,7 @@ export default function FAQ() {
         : faqs[activeCategory as keyof typeof faqs];
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Frequently Asked Questions | WPBun" />
 
             {/* Hero Section */}
@@ -409,6 +409,6 @@ export default function FAQ() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

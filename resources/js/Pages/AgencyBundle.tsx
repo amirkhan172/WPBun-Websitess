@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Check, Star, Shield, Zap, Users, Clock, ChevronDown, ChevronUp, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags, Sparkles } from 'lucide-react';
@@ -178,7 +178,7 @@ export default function AgencyBundle() {
     };
 
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Agency Bundle - WPBun" />
 
             {/* Hero Section */}
@@ -445,7 +445,7 @@ export default function AgencyBundle() {
             </section>
 
             {/* Final CTA */}
-            <section className="py-20 bg-[#0242cc] text-white">
+            <section className="py-20 bg-blue-100 text-gray-900">
                 <div className="container-custom text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -455,7 +455,7 @@ export default function AgencyBundle() {
                         <h2 className="text-4xl md:text-5xl font-bold mb-6">
                             Ready to Grow Your Business?
                         </h2>
-                        <p className="text-white/80 text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+                        <p className="text-gray-600 text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
                             Join 65,000+ happy users who trust WPBun plugins to power their WordPress and WooCommerce websites.
                         </p>
                         <a href="#pricing" className="btn-accent text-lg px-8 py-4 inline-flex items-center gap-2">
@@ -465,6 +465,6 @@ export default function AgencyBundle() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

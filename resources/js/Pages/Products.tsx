@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import {
     LayoutGrid, Store, DollarSign, PlusCircle, Tags, MousePointerClick, Truck,
@@ -143,7 +143,7 @@ const whyChooseUs = [
 
 export default function Products() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Products - Premium WordPress & WooCommerce Plugins | WPBun" />
 
             {/* Hero Section */}
@@ -462,6 +462,6 @@ export default function Products() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

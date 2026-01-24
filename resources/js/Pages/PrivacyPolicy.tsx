@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, Database, UserCheck, Mail, ChevronRight } from 'lucide-react';
 
@@ -172,7 +172,7 @@ const highlights = [
 
 export default function PrivacyPolicy() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="Privacy Policy | WPBun" />
 
             {/* Hero Section */}
@@ -328,6 +328,6 @@ export default function PrivacyPolicy() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }
