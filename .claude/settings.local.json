@@ -12,7 +12,12 @@
       "WebFetch(domain:ps.w.org)",
       "Bash(curl:*)",
       "Bash(cat:*)",
-      "WebFetch(domain:wowoptin.com)"
+      "WebFetch(domain:wowoptin.com)",
+      "Bash(tree:*)",
+      "WebFetch(domain:account.wpxpo.com)",
+      "Bash(wc:*)",
+      "Bash(npm run build:*)",
+      "Bash(php artisan:*)"
     ]
   }
 }

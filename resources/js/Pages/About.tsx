@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import AppLayout from '@/Layouts/AppLayout';
+import DynamicLayout from '@/Layouts/DynamicLayout';
 import { motion } from 'framer-motion';
 import { Users, Star, Code, Heart, Globe, Award, MessageCircle, BookOpen, ChevronRight, Zap, Target, Shield, Clock, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags } from 'lucide-react';
 
@@ -90,7 +90,7 @@ const supportBlocks = [
 
 export default function About() {
     return (
-        <AppLayout>
+        <DynamicLayout>
             <Head title="About Us - Our Story & Mission | WPBun" />
 
             {/* Hero Section */}
@@ -480,6 +480,6 @@ export default function About() {
                     </motion.div>
                 </div>
             </section>
-        </AppLayout>
+        </DynamicLayout>
     );
 }

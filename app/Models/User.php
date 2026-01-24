@@ -19,9 +19,35 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
+        'display_name',
         'email',
+        'role',
         'password',
+        'address_line1',
+        'address_line2',
+        'city',
+        'postal_code',
+        'country',
+        'state',
     ];
+
+    /**
+     * Check if user is admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is regular user
+     */
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
 
     /**
      * The attributes that should be hidden for serialization.

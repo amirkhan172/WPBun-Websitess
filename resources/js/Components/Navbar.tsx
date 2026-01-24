@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, User, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags } from 'lucide-react';
+import { Menu, X, ChevronDown, User, Package, LayoutGrid, Truck, PlusCircle, DollarSign, Store, MousePointerClick, Tags, LayoutDashboard } from 'lucide-react';
 
 interface ProductItem {
     label: string;
@@ -115,7 +115,9 @@ export default function Navbar() {
     const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
     const [isVisible, setIsVisible] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
-    const { url } = usePage();
+    const { url, props } = usePage();
+    const auth = (props as any).auth;
+    const user = auth?.user;
 
     // Check if a link is active
     const isActive = (href: string) => {
@@ -285,13 +287,23 @@ export default function Navbar() {
 
                     {/* CTA Button */}
                     <div className="hidden lg:flex items-center -mr-[3rem]">
-                        <Link
-                            href="/login"
-                            className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-secondary font-medium hover:bg-gray-200 transition-colors"
-                        >
-                            <User className="w-5 h-5" />
-                            Account
-                        </Link>
+                        {user ? (
+                            <Link
+                                href="/user/dashboard"
+                                className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors"
+                            >
+                                <LayoutDashboard className="w-5 h-5" />
+                                Dashboard
+                            </Link>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-secondary font-medium hover:bg-gray-200 transition-colors"
+                            >
+                                <User className="w-5 h-5" />
+                                Account
+                            </Link>
+                        )}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -412,10 +424,25 @@ export default function Navbar() {
                                     );
                                 })}
                                 <div className="pt-4 px-4">
-                                    <Link href="/login" onClick={() => setIsOpen(false)} className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-secondary font-medium hover:bg-gray-200 transition-colors">
-                                        <User className="w-5 h-5" />
-                                        Account
-                                    </Link>
+                                    {user ? (
+                                        <Link
+                                            href="/user/dashboard"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors"
+                                        >
+                                            <LayoutDashboard className="w-5 h-5" />
+                                            Dashboard
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            href="/login"
+                                            onClick={() => setIsOpen(false)}
+                                            className="flex items-center gap-2 px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-secondary font-medium hover:bg-gray-200 transition-colors"
+                                        >
+                                            <User className="w-5 h-5" />
+                                            Account
+                                        </Link>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>
