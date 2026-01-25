@@ -7,7 +7,9 @@ import {
     Clock,
     CheckCircle,
     AlertCircle,
-    Star
+    Star,
+    ShoppingBag,
+    Inbox
 } from 'lucide-react';
 
 interface DashboardStats {
@@ -32,25 +34,11 @@ interface RecentDownload {
     downloadedAt: string;
 }
 
-// Mock data - in real app, this would come from props
-const stats: DashboardStats = {
-    totalDownloads: 24,
-    activeOrders: 3,
-    activeLicenses: 5,
-    totalSpent: '$299',
-};
-
-const recentOrders: RecentOrder[] = [
-    { id: '#WPB-1234', product: 'Agency Bundle', date: 'Jan 15, 2025', status: 'completed', amount: '$499' },
-    { id: '#WPB-1233', product: 'PostX Pro', date: 'Jan 10, 2025', status: 'completed', amount: '$59' },
-    { id: '#WPB-1232', product: 'WowStore Pro', date: 'Dec 28, 2024', status: 'completed', amount: '$49' },
-];
-
-const recentDownloads: RecentDownload[] = [
-    { id: '1', product: 'PostX Pro', version: 'v3.2.1', downloadedAt: '2 hours ago' },
-    { id: '2', product: 'WowStore Pro', version: 'v2.1.0', downloadedAt: '1 day ago' },
-    { id: '3', product: 'WowAddons Pro', version: 'v1.5.3', downloadedAt: '3 days ago' },
-];
+interface Props {
+    stats?: DashboardStats;
+    recentOrders?: RecentOrder[];
+    recentDownloads?: RecentDownload[];
+}
 
 const getStatusIcon = (status: string) => {
     switch (status) {
@@ -65,7 +53,14 @@ const getStatusIcon = (status: string) => {
     }
 };
 
-export default function Dashboard() {
+const EmptyState = ({ icon: Icon, message }: { icon: React.ElementType; message: string }) => (
+    <div className="flex flex-col items-center justify-center py-12 text-gray-400">
+        <Icon className="w-12 h-12 mb-3" />
+        <p className="text-sm">{message}</p>
+    </div>
+);
+
+export default function Dashboard({ stats, recentOrders = [], recentDownloads = [] }: Props) {
     return (
         <UserLayout>
             <Head title="Dashboard" />
@@ -84,26 +79,30 @@ export default function Dashboard() {
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
-                    <div className="divide-y divide-gray-100">
-                        {recentOrders.map((order) => (
-                            <div key={order.id} className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-                                <div>
-                                    <p className="font-medium text-gray-900">{order.product}</p>
-                                    <p className="text-sm text-gray-500">{order.id} • {order.date}</p>
+                    {recentOrders.length > 0 ? (
+                        <div className="divide-y divide-gray-100">
+                            {recentOrders.map((order) => (
+                                <div key={order.id} className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                                    <div>
+                                        <p className="font-medium text-gray-900">{order.product}</p>
+                                        <p className="text-sm text-gray-500">{order.id} • {order.date}</p>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <span className="font-semibold text-gray-900">{order.amount}</span>
+                                        <Badge
+                                            variant={order.status === 'completed' ? 'success' : order.status === 'processing' ? 'info' : 'warning'}
+                                            size="md"
+                                        >
+                                            {getStatusIcon(order.status)}
+                                            {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
+                                        </Badge>
+                                    </div>
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <span className="font-semibold text-gray-900">{order.amount}</span>
-                                    <Badge
-                                        variant={order.status === 'completed' ? 'success' : order.status === 'processing' ? 'info' : 'warning'}
-                                        size="md"
-                                    >
-                                        {getStatusIcon(order.status)}
-                                        {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
-                                    </Badge>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyState icon={ShoppingBag} message="No orders yet" />
+                    )}
                 </Card>
 
                 {/* Recent Downloads */}
@@ -118,22 +117,26 @@ export default function Dashboard() {
                             <ArrowRight className="w-4 h-4" />
                         </Link>
                     </div>
-                    <div className="divide-y divide-gray-100">
-                        {recentDownloads.map((download) => (
-                            <div key={download.id} className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
-                                        <Download className="w-5 h-5 text-white" />
+                    {recentDownloads.length > 0 ? (
+                        <div className="divide-y divide-gray-100">
+                            {recentDownloads.map((download) => (
+                                <div key={download.id} className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-lg flex items-center justify-center">
+                                            <Download className="w-5 h-5 text-white" />
+                                        </div>
+                                        <div>
+                                            <p className="font-medium text-gray-900">{download.product}</p>
+                                            <p className="text-sm text-gray-500">{download.version}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="font-medium text-gray-900">{download.product}</p>
-                                        <p className="text-sm text-gray-500">{download.version}</p>
-                                    </div>
+                                    <span className="text-sm text-gray-500">{download.downloadedAt}</span>
                                 </div>
-                                <span className="text-sm text-gray-500">{download.downloadedAt}</span>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyState icon={Download} message="No downloads yet" />
+                    )}
                 </Card>
             </div>
 

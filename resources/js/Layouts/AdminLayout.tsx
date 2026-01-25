@@ -205,7 +205,6 @@ export default function AdminLayout({ children }: PropsWithChildren) {
                         >
                             <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                                 <Bell className="w-5 h-5" />
-                                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                             </button>
 
                             <AnimatePresence>
@@ -220,20 +219,9 @@ export default function AdminLayout({ children }: PropsWithChildren) {
                                             <h3 className="font-semibold text-gray-900">Notifications</h3>
                                         </div>
                                         <div className="max-h-64 overflow-y-auto">
-                                            <div className="px-4 py-3 hover:bg-gray-50 border-b border-gray-50">
-                                                <p className="text-sm font-medium text-gray-900">New Order #12345</p>
-                                                <p className="text-xs text-gray-500">Agency Bundle - $499</p>
-                                                <p className="text-xs text-gray-400 mt-1">5 min ago</p>
-                                            </div>
-                                            <div className="px-4 py-3 hover:bg-gray-50 border-b border-gray-50">
-                                                <p className="text-sm font-medium text-gray-900">New User Registration</p>
-                                                <p className="text-xs text-gray-500">john@example.com</p>
-                                                <p className="text-xs text-gray-400 mt-1">1 hour ago</p>
-                                            </div>
-                                            <div className="px-4 py-3 hover:bg-gray-50">
-                                                <p className="text-sm font-medium text-gray-900">Support Ticket #789</p>
-                                                <p className="text-xs text-gray-500">License activation issue</p>
-                                                <p className="text-xs text-gray-400 mt-1">3 hours ago</p>
+                                            <div className="px-4 py-8 text-center text-gray-400">
+                                                <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                                                <p className="text-sm">No new notifications</p>
                                             </div>
                                         </div>
                                         <div className="px-4 py-3 border-t border-gray-100">

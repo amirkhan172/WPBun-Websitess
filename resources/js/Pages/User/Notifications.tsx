@@ -7,11 +7,11 @@ import {
     Key,
     ShoppingBag,
     CheckCircle,
-    AlertCircle,
     Info,
     Gift,
     Trash2,
-    Check
+    Check,
+    Inbox
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -24,57 +24,9 @@ interface Notification {
     read: boolean;
 }
 
-// Mock notifications data
-const initialNotifications: Notification[] = [
-    {
-        id: '1',
-        type: 'update',
-        title: 'New Update Available',
-        message: 'WowShipping v2.5.0 is now available for download with new features and bug fixes.',
-        time: '2 hours ago',
-        read: false,
-    },
-    {
-        id: '2',
-        type: 'license',
-        title: 'License Activated',
-        message: 'Your PostX Pro license has been activated successfully on your website.',
-        time: '1 day ago',
-        read: false,
-    },
-    {
-        id: '3',
-        type: 'order',
-        title: 'Order Confirmed',
-        message: 'Your order #12345 for Agency Bundle has been confirmed and is ready for download.',
-        time: '3 days ago',
-        read: false,
-    },
-    {
-        id: '4',
-        type: 'promo',
-        title: 'Special Offer!',
-        message: 'Get 50% off on all plugins this weekend. Use code WEEKEND50 at checkout.',
-        time: '5 days ago',
-        read: true,
-    },
-    {
-        id: '5',
-        type: 'update',
-        title: 'WowStore Updated',
-        message: 'WowStore v3.1.0 has been released with improved performance and new templates.',
-        time: '1 week ago',
-        read: true,
-    },
-    {
-        id: '6',
-        type: 'info',
-        title: 'Welcome to WPBun!',
-        message: 'Thank you for joining WPBun. Explore our plugins and start building amazing websites.',
-        time: '2 weeks ago',
-        read: true,
-    },
-];
+interface Props {
+    notifications?: Notification[];
+}
 
 const getNotificationIcon = (type: string) => {
     switch (type) {
@@ -110,7 +62,7 @@ const getNotificationBg = (type: string) => {
     }
 };
 
-export default function Notifications() {
+export default function Notifications({ notifications: initialNotifications = [] }: Props) {
     const [notifications, setNotifications] = useState<Notification[]>(initialNotifications);
     const [filter, setFilter] = useState<'all' | 'unread'>('all');
 
@@ -205,7 +157,11 @@ export default function Notifications() {
                 {filteredNotifications.length === 0 ? (
                     <div className="px-6 py-12 text-center">
                         <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <Bell className="w-8 h-8 text-gray-400" />
+                            {notifications.length === 0 ? (
+                                <Inbox className="w-8 h-8 text-gray-400" />
+                            ) : (
+                                <Bell className="w-8 h-8 text-gray-400" />
+                            )}
                         </div>
                         <h3 className="text-lg font-medium text-gray-900 mb-1">No notifications</h3>
                         <p className="text-gray-500">

@@ -9,62 +9,90 @@ import {
     Users,
     Package,
     Download,
-    Calendar,
     BarChart3,
-    PieChart,
     ArrowUpRight,
-    ArrowDownRight
+    ArrowDownRight,
+    Inbox
 } from 'lucide-react';
 
-// Revenue data for chart visualization
-const revenueData = [
-    { month: 'Jan', revenue: 12500, orders: 89 },
-    { month: 'Feb', revenue: 15200, orders: 102 },
-    { month: 'Mar', revenue: 18700, orders: 128 },
-    { month: 'Apr', revenue: 16300, orders: 115 },
-    { month: 'May', revenue: 21500, orders: 145 },
-    { month: 'Jun', revenue: 24800, orders: 167 },
-    { month: 'Jul', revenue: 22100, orders: 152 },
-    { month: 'Aug', revenue: 26300, orders: 178 },
-    { month: 'Sep', revenue: 28900, orders: 195 },
-    { month: 'Oct', revenue: 32500, orders: 218 },
-    { month: 'Nov', revenue: 38200, orders: 256 },
-    { month: 'Dec', revenue: 48574, orders: 312 },
-];
+interface RevenueData {
+    month: string;
+    revenue: number;
+    orders: number;
+}
 
-// Product performance
-const productPerformance = [
-    { name: 'Agency Bundle', revenue: 122255, sales: 245, growth: 18 },
-    { name: 'PostX Pro', revenue: 11151, sales: 189, growth: 12 },
-    { name: 'WowStore Pro', revenue: 7644, sales: 156, growth: 8 },
-    { name: 'WowShipping', revenue: 5226, sales: 134, growth: 15 },
-    { name: 'WholesaleX', revenue: 4802, sales: 98, growth: 5 },
-    { name: 'WowAddons', revenue: 4368, sales: 112, growth: 10 },
-    { name: 'WowRevenue', revenue: 3822, sales: 78, growth: 7 },
-    { name: 'WowOptin', revenue: 1885, sales: 65, growth: -3 },
-];
+interface ProductPerformance {
+    name: string;
+    revenue: number;
+    sales: number;
+    growth: number;
+}
 
-// Summary stats
-const summaryStats = [
-    { title: 'Total Revenue', value: '$285,574', change: '+24.5%', trend: 'up', icon: <DollarSign className="w-6 h-6" />, color: 'bg-green-500' },
-    { title: 'Total Orders', value: '1,957', change: '+18.2%', trend: 'up', icon: <ShoppingCart className="w-6 h-6" />, color: 'bg-blue-500' },
-    { title: 'New Customers', value: '847', change: '+32.1%', trend: 'up', icon: <Users className="w-6 h-6" />, color: 'bg-purple-500' },
-    { title: 'Avg Order Value', value: '$145.89', change: '+5.3%', trend: 'up', icon: <BarChart3 className="w-6 h-6" />, color: 'bg-orange-500' },
-];
+interface CountryData {
+    country: string;
+    revenue: number;
+    percentage: number;
+}
 
-// Top countries
-const topCountries = [
-    { country: 'United States', revenue: 98500, percentage: 35 },
-    { country: 'United Kingdom', revenue: 45200, percentage: 16 },
-    { country: 'Germany', revenue: 38700, percentage: 14 },
-    { country: 'Canada', revenue: 28400, percentage: 10 },
-    { country: 'Australia', revenue: 22100, percentage: 8 },
-    { country: 'Others', revenue: 48674, percentage: 17 },
-];
+interface SummaryStats {
+    totalRevenue: { value: string; change: string; trend: 'up' | 'down' };
+    totalOrders: { value: string; change: string; trend: 'up' | 'down' };
+    newCustomers: { value: string; change: string; trend: 'up' | 'down' };
+    avgOrderValue: { value: string; change: string; trend: 'up' | 'down' };
+}
 
-export default function Reports() {
+interface Props {
+    revenueData?: RevenueData[];
+    productPerformance?: ProductPerformance[];
+    topCountries?: CountryData[];
+    stats?: SummaryStats;
+}
+
+const EmptyChart = () => (
+    <div className="flex flex-col items-center justify-center h-64 text-gray-400">
+        <Inbox className="w-12 h-12 mb-3" />
+        <p className="text-sm">No data available</p>
+    </div>
+);
+
+export default function Reports({ revenueData = [], productPerformance = [], topCountries = [], stats }: Props) {
     const [dateRange, setDateRange] = useState('year');
-    const maxRevenue = Math.max(...revenueData.map(d => d.revenue));
+    const maxRevenue = revenueData.length > 0 ? Math.max(...revenueData.map(d => d.revenue)) : 0;
+
+    const summaryStats = [
+        {
+            title: 'Total Revenue',
+            value: stats?.totalRevenue?.value || '$0',
+            change: stats?.totalRevenue?.change || '0%',
+            trend: stats?.totalRevenue?.trend || 'up',
+            icon: <DollarSign className="w-6 h-6" />,
+            color: 'bg-green-500'
+        },
+        {
+            title: 'Total Orders',
+            value: stats?.totalOrders?.value || '0',
+            change: stats?.totalOrders?.change || '0%',
+            trend: stats?.totalOrders?.trend || 'up',
+            icon: <ShoppingCart className="w-6 h-6" />,
+            color: 'bg-blue-500'
+        },
+        {
+            title: 'New Customers',
+            value: stats?.newCustomers?.value || '0',
+            change: stats?.newCustomers?.change || '0%',
+            trend: stats?.newCustomers?.trend || 'up',
+            icon: <Users className="w-6 h-6" />,
+            color: 'bg-purple-500'
+        },
+        {
+            title: 'Avg Order Value',
+            value: stats?.avgOrderValue?.value || '$0',
+            change: stats?.avgOrderValue?.change || '0%',
+            trend: stats?.avgOrderValue?.trend || 'up',
+            icon: <BarChart3 className="w-6 h-6" />,
+            color: 'bg-orange-500'
+        },
+    ];
 
     return (
         <AdminLayout>
@@ -126,40 +154,50 @@ export default function Reports() {
                             </span>
                         </div>
                     </div>
-                    {/* Simple Bar Chart */}
-                    <div className="flex items-end justify-between gap-2 h-64">
-                        {revenueData.map((data) => (
-                            <div key={data.month} className="flex-1 flex flex-col items-center gap-2">
-                                <div
-                                    className="w-full bg-primary/80 rounded-t-lg hover:bg-primary transition-colors cursor-pointer"
-                                    style={{ height: `${(data.revenue / maxRevenue) * 100}%` }}
-                                    title={`$${data.revenue.toLocaleString()}`}
-                                />
-                                <span className="text-xs text-gray-500">{data.month}</span>
-                            </div>
-                        ))}
-                    </div>
+                    {revenueData.length > 0 ? (
+                        <div className="flex items-end justify-between gap-2 h-64">
+                            {revenueData.map((data) => (
+                                <div key={data.month} className="flex-1 flex flex-col items-center gap-2">
+                                    <div
+                                        className="w-full bg-primary/80 rounded-t-lg hover:bg-primary transition-colors cursor-pointer"
+                                        style={{ height: `${(data.revenue / maxRevenue) * 100}%` }}
+                                        title={`$${data.revenue.toLocaleString()}`}
+                                    />
+                                    <span className="text-xs text-gray-500">{data.month}</span>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <EmptyChart />
+                    )}
                 </div>
 
                 {/* Top Countries */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                     <h2 className="font-semibold text-gray-900 mb-6">Revenue by Country</h2>
-                    <div className="space-y-4">
-                        {topCountries.map((country) => (
-                            <div key={country.country}>
-                                <div className="flex items-center justify-between mb-1">
-                                    <span className="text-sm text-gray-700">{country.country}</span>
-                                    <span className="text-sm font-medium text-gray-900">${country.revenue.toLocaleString()}</span>
+                    {topCountries.length > 0 ? (
+                        <div className="space-y-4">
+                            {topCountries.map((country) => (
+                                <div key={country.country}>
+                                    <div className="flex items-center justify-between mb-1">
+                                        <span className="text-sm text-gray-700">{country.country}</span>
+                                        <span className="text-sm font-medium text-gray-900">${country.revenue.toLocaleString()}</span>
+                                    </div>
+                                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+                                        <div
+                                            className="h-full bg-primary rounded-full"
+                                            style={{ width: `${country.percentage}%` }}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                                    <div
-                                        className="h-full bg-primary rounded-full"
-                                        style={{ width: `${country.percentage}%` }}
-                                    />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="flex flex-col items-center justify-center py-8 text-gray-400">
+                            <Inbox className="w-10 h-10 mb-2" />
+                            <p className="text-sm">No data available</p>
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -168,51 +206,59 @@ export default function Reports() {
                 <div className="px-6 py-4 border-b border-gray-100">
                     <h2 className="font-semibold text-gray-900">Product Performance</h2>
                 </div>
-                <div className="overflow-x-auto">
-                    <table className="w-full">
-                        <thead>
-                            <tr className="bg-gray-50">
-                                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Product</th>
-                                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Revenue</th>
-                                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Sales</th>
-                                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Growth</th>
-                                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Performance</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-100">
-                            {productPerformance.map((product) => (
-                                <tr key={product.name} className="hover:bg-gray-50">
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-lg flex items-center justify-center">
-                                                <Package className="w-5 h-5 text-primary" />
-                                            </div>
-                                            <span className="font-medium text-gray-900">{product.name}</span>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 font-semibold text-gray-900">${product.revenue.toLocaleString()}</td>
-                                    <td className="px-6 py-4 text-gray-600">{product.sales}</td>
-                                    <td className="px-6 py-4">
-                                        <span className={`inline-flex items-center gap-1 text-sm font-medium ${
-                                            product.growth >= 0 ? 'text-green-600' : 'text-red-600'
-                                        }`}>
-                                            {product.growth >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                                            {product.growth >= 0 ? '+' : ''}{product.growth}%
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
-                                            <div
-                                                className={`h-full rounded-full ${product.growth >= 10 ? 'bg-green-500' : product.growth >= 0 ? 'bg-yellow-500' : 'bg-red-500'}`}
-                                                style={{ width: `${Math.min(Math.abs(product.growth) * 5, 100)}%` }}
-                                            />
-                                        </div>
-                                    </td>
+                {productPerformance.length > 0 ? (
+                    <div className="overflow-x-auto">
+                        <table className="w-full">
+                            <thead>
+                                <tr className="bg-gray-50">
+                                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Product</th>
+                                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Revenue</th>
+                                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Sales</th>
+                                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Growth</th>
+                                    <th className="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase">Performance</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody className="divide-y divide-gray-100">
+                                {productPerformance.map((product) => (
+                                    <tr key={product.name} className="hover:bg-gray-50">
+                                        <td className="px-6 py-4">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-10 h-10 bg-gradient-to-br from-primary/20 to-blue-100 rounded-lg flex items-center justify-center">
+                                                    <Package className="w-5 h-5 text-primary" />
+                                                </div>
+                                                <span className="font-medium text-gray-900">{product.name}</span>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4 font-semibold text-gray-900">${product.revenue.toLocaleString()}</td>
+                                        <td className="px-6 py-4 text-gray-600">{product.sales}</td>
+                                        <td className="px-6 py-4">
+                                            <span className={`inline-flex items-center gap-1 text-sm font-medium ${
+                                                product.growth >= 0 ? 'text-green-600' : 'text-red-600'
+                                            }`}>
+                                                {product.growth >= 0 ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                                                {product.growth >= 0 ? '+' : ''}{product.growth}%
+                                            </span>
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <div className="w-24 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                                <div
+                                                    className={`h-full rounded-full ${product.growth >= 10 ? 'bg-green-500' : product.growth >= 0 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                                                    style={{ width: `${Math.min(Math.abs(product.growth) * 5, 100)}%` }}
+                                                />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+                        <Inbox className="w-16 h-16 mb-4" />
+                        <h3 className="text-lg font-medium text-gray-900 mb-1">No product data</h3>
+                        <p className="text-sm text-gray-500">Product performance data will appear here once you have sales.</p>
+                    </div>
+                )}
             </div>
         </AdminLayout>
     );
