@@ -17,7 +17,8 @@
       "WebFetch(domain:account.wpxpo.com)",
       "Bash(wc:*)",
       "Bash(npm run build:*)",
-      "Bash(php artisan:*)"
+      "Bash(php artisan:*)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

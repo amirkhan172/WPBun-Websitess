@@ -234,7 +234,6 @@ export default function UserLayout({ children }: PropsWithChildren) {
                         >
                             <button className="relative p-2 text-gray-600 hover:bg-gray-100 rounded-lg">
                                 <Bell className="w-5 h-5" />
-                                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                             </button>
 
                             <AnimatePresence>
@@ -247,50 +246,15 @@ export default function UserLayout({ children }: PropsWithChildren) {
                                         className="absolute right-0 top-full mt-1 w-80 bg-white rounded-xl shadow-lg border border-gray-100 z-50"
                                     >
                                         {/* Header */}
-                                        <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                                        <div className="px-4 py-3 border-b border-gray-100">
                                             <h3 className="font-semibold text-gray-900">Notifications</h3>
-                                            <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full">3 New</span>
                                         </div>
 
-                                        {/* Notifications List */}
-                                        <div className="max-h-80 overflow-y-auto">
-                                            <div className="px-4 py-3 hover:bg-gray-50 border-b border-gray-50 cursor-pointer">
-                                                <div className="flex items-start gap-3">
-                                                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                        <Download className="w-4 h-4 text-green-600" />
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-sm text-gray-900 font-medium">New Update Available</p>
-                                                        <p className="text-xs text-gray-500 mt-0.5">WowShipping v2.5.0 is now available for download.</p>
-                                                        <p className="text-xs text-gray-400 mt-1">2 hours ago</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="px-4 py-3 hover:bg-gray-50 border-b border-gray-50 cursor-pointer">
-                                                <div className="flex items-start gap-3">
-                                                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                        <Key className="w-4 h-4 text-blue-600" />
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-sm text-gray-900 font-medium">License Activated</p>
-                                                        <p className="text-xs text-gray-500 mt-0.5">Your PostX Pro license has been activated successfully.</p>
-                                                        <p className="text-xs text-gray-400 mt-1">1 day ago</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="px-4 py-3 hover:bg-gray-50 border-b border-gray-50 cursor-pointer">
-                                                <div className="flex items-start gap-3">
-                                                    <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                                        <ShoppingBag className="w-4 h-4 text-orange-600" />
-                                                    </div>
-                                                    <div>
-                                                        <p className="text-sm text-gray-900 font-medium">Order Confirmed</p>
-                                                        <p className="text-xs text-gray-500 mt-0.5">Your order #12345 has been confirmed.</p>
-                                                        <p className="text-xs text-gray-400 mt-1">3 days ago</p>
-                                                    </div>
-                                                </div>
+                                        {/* Empty State */}
+                                        <div className="max-h-64 overflow-y-auto">
+                                            <div className="px-4 py-8 text-center text-gray-400">
+                                                <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
+                                                <p className="text-sm">No new notifications</p>
                                             </div>
                                         </div>
 

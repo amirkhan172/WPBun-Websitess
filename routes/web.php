@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminLicenseController;
+use App\Http\Controllers\Admin\AdminSupportController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -162,28 +167,44 @@ Route::middleware('auth')->group(function () {
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     // Dashboard
-    Route::get('/dashboard', fn() => Inertia::render('Admin/Dashboard'))->name('dashboard');
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-    // Products Management
-    Route::get('/products', fn() => Inertia::render('Admin/Products'))->name('products');
+    // Products CRUD
+    Route::get('/products', [AdminProductController::class, 'index'])->name('products');
+    Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
+    Route::put('/products/{product}', [AdminProductController::class, 'update'])->name('products.update');
+    Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
+    Route::post('/products/bulk-action', [AdminProductController::class, 'bulkAction'])->name('products.bulk-action');
 
     // Orders Management
-    Route::get('/orders', fn() => Inertia::render('Admin/Orders'))->name('orders');
-
-    // Users Management
-    Route::get('/users', fn() => Inertia::render('Admin/Users'))->name('users');
+    Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders');
+    Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
+    Route::patch('/orders/{order}', [AdminOrderController::class, 'update'])->name('orders.update');
+    Route::post('/orders/{order}/refund', [AdminOrderController::class, 'refund'])->name('orders.refund');
 
     // Licenses Management
-    Route::get('/licenses', fn() => Inertia::render('Admin/Licenses'))->name('licenses');
+    Route::get('/licenses', [AdminLicenseController::class, 'index'])->name('licenses');
+    Route::post('/licenses', [AdminLicenseController::class, 'store'])->name('licenses.store');
+    Route::put('/licenses/{license}', [AdminLicenseController::class, 'update'])->name('licenses.update');
+    Route::delete('/licenses/{license}', [AdminLicenseController::class, 'destroy'])->name('licenses.destroy');
+    Route::post('/licenses/{license}/revoke', [AdminLicenseController::class, 'revoke'])->name('licenses.revoke');
+    Route::post('/licenses/{license}/reset', [AdminLicenseController::class, 'resetActivations'])->name('licenses.reset');
 
     // Support Tickets
-    Route::get('/support', fn() => Inertia::render('Admin/Support'))->name('support');
+    Route::get('/support', [AdminSupportController::class, 'index'])->name('support');
+    Route::get('/support/{ticket}', [AdminSupportController::class, 'show'])->name('support.show');
+    Route::post('/support/{ticket}/reply', [AdminSupportController::class, 'reply'])->name('support.reply');
+    Route::patch('/support/{ticket}', [AdminSupportController::class, 'update'])->name('support.update');
+    Route::post('/support/{ticket}/close', [AdminSupportController::class, 'close'])->name('support.close');
+
+    // Users Management
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
 
     // Reports & Analytics
-    Route::get('/reports', fn() => Inertia::render('Admin/Reports'))->name('reports');
+    Route::get('/reports', [AdminController::class, 'reports'])->name('reports');
 
     // Settings
-    Route::get('/settings', fn() => Inertia::render('Admin/Settings'))->name('settings');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('settings');
 });
 
 // Redirect /admin to admin dashboard

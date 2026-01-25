@@ -3,7 +3,6 @@ import { Head } from '@inertiajs/react';
 import { useState } from 'react';
 import {
     Search,
-    Filter,
     MoreVertical,
     Eye,
     Edit,
@@ -15,7 +14,8 @@ import {
     ChevronLeft,
     ChevronRight,
     Download,
-    Users as UsersIcon
+    Users as UsersIcon,
+    Inbox
 } from 'lucide-react';
 
 interface User {
@@ -30,17 +30,24 @@ interface User {
     lastActive: string;
 }
 
-// Mock users data
-const usersData: User[] = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', role: 'user', status: 'active', orders: 5, totalSpent: 847, joinedAt: 'Jan 15, 2025', lastActive: '2 hours ago' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', role: 'user', status: 'active', orders: 3, totalSpent: 177, joinedAt: 'Jan 10, 2025', lastActive: '1 day ago' },
-    { id: 3, name: 'Mike Johnson', email: 'mike@example.com', role: 'user', status: 'active', orders: 8, totalSpent: 1245, joinedAt: 'Dec 28, 2024', lastActive: '5 min ago' },
-    { id: 4, name: 'Sarah Wilson', email: 'sarah@example.com', role: 'admin', status: 'active', orders: 0, totalSpent: 0, joinedAt: 'Dec 20, 2024', lastActive: 'Online' },
-    { id: 5, name: 'Tom Brown', email: 'tom@example.com', role: 'user', status: 'inactive', orders: 2, totalSpent: 108, joinedAt: 'Dec 15, 2024', lastActive: '1 month ago' },
-    { id: 6, name: 'Emily Davis', email: 'emily@example.com', role: 'user', status: 'active', orders: 4, totalSpent: 596, joinedAt: 'Dec 10, 2024', lastActive: '3 hours ago' },
-    { id: 7, name: 'Chris Lee', email: 'chris@example.com', role: 'user', status: 'banned', orders: 1, totalSpent: 49, joinedAt: 'Dec 05, 2024', lastActive: '2 weeks ago' },
-    { id: 8, name: 'Anna Martinez', email: 'anna@example.com', role: 'user', status: 'active', orders: 6, totalSpent: 747, joinedAt: 'Nov 28, 2024', lastActive: '1 hour ago' },
-];
+interface Stats {
+    totalUsers: number;
+    activeUsers: number;
+    newThisMonth: number;
+    admins: number;
+}
+
+interface Pagination {
+    currentPage: number;
+    totalPages: number;
+    total: number;
+}
+
+interface Props {
+    users?: User[];
+    stats?: Stats;
+    pagination?: Pagination;
+}
 
 const getStatusBadge = (status: string) => {
     switch (status) {
@@ -66,27 +73,38 @@ const getRoleBadge = (role: string) => {
     }
 };
 
-// User stats
-const userStats = [
-    { label: 'Total Users', value: '3,847', icon: <UsersIcon className="w-5 h-5" />, color: 'bg-blue-500' },
-    { label: 'Active Users', value: '3,521', icon: <UsersIcon className="w-5 h-5" />, color: 'bg-green-500' },
-    { label: 'New This Month', value: '234', icon: <UserPlus className="w-5 h-5" />, color: 'bg-purple-500' },
-    { label: 'Admins', value: '5', icon: <Shield className="w-5 h-5" />, color: 'bg-orange-500' },
-];
+const EmptyState = () => (
+    <div className="flex flex-col items-center justify-center py-16 text-gray-400">
+        <Inbox className="w-16 h-16 mb-4" />
+        <h3 className="text-lg font-medium text-gray-900 mb-1">No users yet</h3>
+        <p className="text-sm text-gray-500 mb-4">Users will appear here when they register.</p>
+        <button className="inline-flex items-center gap-2 px-4 py-2.5 bg-primary text-white font-medium rounded-lg hover:bg-primary/90">
+            <UserPlus className="w-5 h-5" />
+            Add User
+        </button>
+    </div>
+);
 
-export default function Users() {
+export default function Users({ users = [], stats, pagination }: Props) {
     const [searchQuery, setSearchQuery] = useState('');
     const [roleFilter, setRoleFilter] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
     const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
-    const filteredUsers = usersData.filter(user => {
+    const filteredUsers = users.filter(user => {
         const matchesSearch = user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             user.email.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesRole = !roleFilter || user.role === roleFilter;
         const matchesStatus = !statusFilter || user.status === statusFilter;
         return matchesSearch && matchesRole && matchesStatus;
     });
+
+    const userStats = [
+        { label: 'Total Users', value: stats?.totalUsers?.toString() || '0', icon: <UsersIcon className="w-5 h-5" />, color: 'bg-blue-500' },
+        { label: 'Active Users', value: stats?.activeUsers?.toString() || '0', icon: <UsersIcon className="w-5 h-5" />, color: 'bg-green-500' },
+        { label: 'New This Month', value: stats?.newThisMonth?.toString() || '0', icon: <UserPlus className="w-5 h-5" />, color: 'bg-purple-500' },
+        { label: 'Admins', value: stats?.admins?.toString() || '0', icon: <Shield className="w-5 h-5" />, color: 'bg-orange-500' },
+    ];
 
     return (
         <AdminLayout>
@@ -164,107 +182,115 @@ export default function Users() {
 
             {/* Users Table */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-                <div className="overflow-x-auto">
-                    <table className="w-full">
-                        <thead>
-                            <tr className="bg-gray-50 border-b border-gray-100">
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">User</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Role</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Orders</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Total Spent</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Joined</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Last Active</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody className="divide-y divide-gray-100">
-                            {filteredUsers.map((user) => (
-                                <tr key={user.id} className="hover:bg-gray-50">
-                                    <td className="px-6 py-4">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center">
-                                                <span className="text-white font-semibold">
-                                                    {user.name.charAt(0).toUpperCase()}
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <p className="font-medium text-gray-900">{user.name}</p>
-                                                <p className="text-xs text-gray-500">{user.email}</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4">{getRoleBadge(user.role)}</td>
-                                    <td className="px-6 py-4">{getStatusBadge(user.status)}</td>
-                                    <td className="px-6 py-4 text-gray-600">{user.orders}</td>
-                                    <td className="px-6 py-4 font-semibold text-gray-900">${user.totalSpent}</td>
-                                    <td className="px-6 py-4 text-sm text-gray-500">{user.joinedAt}</td>
-                                    <td className="px-6 py-4">
-                                        <span className={`text-sm ${user.lastActive === 'Online' ? 'text-green-600 font-medium' : 'text-gray-500'}`}>
-                                            {user.lastActive}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <div className="relative">
-                                            <button
-                                                onClick={() => setOpenDropdown(openDropdown === user.id ? null : user.id)}
-                                                className="p-2 hover:bg-gray-100 rounded-lg"
-                                            >
-                                                <MoreVertical className="w-4 h-4 text-gray-500" />
-                                            </button>
-                                            {openDropdown === user.id && (
-                                                <div className="absolute right-0 top-full mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-10">
-                                                    <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                                        <Eye className="w-4 h-4" /> View Profile
-                                                    </button>
-                                                    <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                                        <Edit className="w-4 h-4" /> Edit User
-                                                    </button>
-                                                    <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                                                        <Mail className="w-4 h-4" /> Send Email
-                                                    </button>
-                                                    {user.role !== 'admin' && (
-                                                        <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-purple-600 hover:bg-purple-50">
-                                                            <Shield className="w-4 h-4" /> Make Admin
-                                                        </button>
-                                                    )}
-                                                    {user.status !== 'banned' ? (
-                                                        <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-orange-600 hover:bg-orange-50">
-                                                            <ShieldOff className="w-4 h-4" /> Ban User
-                                                        </button>
-                                                    ) : (
-                                                        <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-green-600 hover:bg-green-50">
-                                                            <Shield className="w-4 h-4" /> Unban User
-                                                        </button>
-                                                    )}
-                                                    <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                                                        <Trash2 className="w-4 h-4" /> Delete
-                                                    </button>
+                {filteredUsers.length > 0 ? (
+                    <>
+                        <div className="overflow-x-auto">
+                            <table className="w-full">
+                                <thead>
+                                    <tr className="bg-gray-50 border-b border-gray-100">
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">User</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Role</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Status</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Orders</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Total Spent</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Joined</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Last Active</th>
+                                        <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody className="divide-y divide-gray-100">
+                                    {filteredUsers.map((user) => (
+                                        <tr key={user.id} className="hover:bg-gray-50">
+                                            <td className="px-6 py-4">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-10 h-10 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center">
+                                                        <span className="text-white font-semibold">
+                                                            {user.name.charAt(0).toUpperCase()}
+                                                        </span>
+                                                    </div>
+                                                    <div>
+                                                        <p className="font-medium text-gray-900">{user.name}</p>
+                                                        <p className="text-xs text-gray-500">{user.email}</p>
+                                                    </div>
                                                 </div>
-                                            )}
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                            </td>
+                                            <td className="px-6 py-4">{getRoleBadge(user.role)}</td>
+                                            <td className="px-6 py-4">{getStatusBadge(user.status)}</td>
+                                            <td className="px-6 py-4 text-gray-600">{user.orders}</td>
+                                            <td className="px-6 py-4 font-semibold text-gray-900">${user.totalSpent}</td>
+                                            <td className="px-6 py-4 text-sm text-gray-500">{user.joinedAt}</td>
+                                            <td className="px-6 py-4">
+                                                <span className={`text-sm ${user.lastActive === 'Online' ? 'text-green-600 font-medium' : 'text-gray-500'}`}>
+                                                    {user.lastActive}
+                                                </span>
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                <div className="relative">
+                                                    <button
+                                                        onClick={() => setOpenDropdown(openDropdown === user.id ? null : user.id)}
+                                                        className="p-2 hover:bg-gray-100 rounded-lg"
+                                                    >
+                                                        <MoreVertical className="w-4 h-4 text-gray-500" />
+                                                    </button>
+                                                    {openDropdown === user.id && (
+                                                        <div className="absolute right-0 top-full mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-10">
+                                                            <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                                                <Eye className="w-4 h-4" /> View Profile
+                                                            </button>
+                                                            <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                                                <Edit className="w-4 h-4" /> Edit User
+                                                            </button>
+                                                            <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
+                                                                <Mail className="w-4 h-4" /> Send Email
+                                                            </button>
+                                                            {user.role !== 'admin' && (
+                                                                <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-purple-600 hover:bg-purple-50">
+                                                                    <Shield className="w-4 h-4" /> Make Admin
+                                                                </button>
+                                                            )}
+                                                            {user.status !== 'banned' ? (
+                                                                <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-orange-600 hover:bg-orange-50">
+                                                                    <ShieldOff className="w-4 h-4" /> Ban User
+                                                                </button>
+                                                            ) : (
+                                                                <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-green-600 hover:bg-green-50">
+                                                                    <Shield className="w-4 h-4" /> Unban User
+                                                                </button>
+                                                            )}
+                                                            <button className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                                                <Trash2 className="w-4 h-4" /> Delete
+                                                            </button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
 
-                {/* Pagination */}
-                <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
-                    <p className="text-sm text-gray-500">
-                        Showing <span className="font-medium">1</span> to <span className="font-medium">{filteredUsers.length}</span> of <span className="font-medium">{usersData.length}</span> users
-                    </p>
-                    <div className="flex items-center gap-2">
-                        <button className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled>
-                            <ChevronLeft className="w-4 h-4" />
-                        </button>
-                        <button className="px-3 py-1.5 bg-primary text-white rounded-lg text-sm font-medium">1</button>
-                        <button className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50">
-                            <ChevronRight className="w-4 h-4" />
-                        </button>
-                    </div>
-                </div>
+                        {/* Pagination */}
+                        {pagination && pagination.totalPages > 1 && (
+                            <div className="px-6 py-4 border-t border-gray-100 flex items-center justify-between">
+                                <p className="text-sm text-gray-500">
+                                    Showing <span className="font-medium">{filteredUsers.length}</span> of <span className="font-medium">{pagination.total}</span> users
+                                </p>
+                                <div className="flex items-center gap-2">
+                                    <button className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled={pagination.currentPage === 1}>
+                                        <ChevronLeft className="w-4 h-4" />
+                                    </button>
+                                    <span className="px-3 py-1.5 bg-primary text-white rounded-lg text-sm font-medium">{pagination.currentPage}</span>
+                                    <button className="p-2 border border-gray-200 rounded-lg hover:bg-gray-50 disabled:opacity-50" disabled={pagination.currentPage === pagination.totalPages}>
+                                        <ChevronRight className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <EmptyState />
+                )}
             </div>
         </AdminLayout>
     );
